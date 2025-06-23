@@ -1,152 +1,129 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="en">
 <head>
-    <title>TravEasy Travels – Your Trip Starts Here</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="assets/css/main.css" />
+  <title>TravEasy Travels – Bright Journeys Await</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="stylesheet" href="assets/css/main.css"/>
+  <style>
+    body { --main-color: #FF6F61; --accent-color: #FFD700; }
+    #banner { background: var(--main-color); color: white; }
+    .button { background: var(--accent-color); color: #333; }
+    .highlight { border-top: 4px solid var(--accent-color); }
+    footer { background: #333; color: white; }
+    footer .links a { color: #ccc; }
+    footer .icons a { color: #FFD700; }
+  </style>
 </head>
 <body class="is-preload">
 <div id="page-wrapper">
 
-    <!-- Header -->
-    <div id="header">
-        <!-- Logo -->
-        <h1><a href="index.html" id="logo">TravEasy <em>Travels</em></a></h1>
+  <!-- Header -->
+  <div id="header">
+    <h1><a href="index.html" id="logo">TravEasy <em>Travels</em></a></h1>
+    <nav id="nav">
+      <ul>
+        <li class="current"><a href="#">Home</a></li>
+        <li><a href="#flights">Flights</a></li>
+        <li><a href="#hotels">Hotels</a></li>
+        <li><a href="#cabs">Cabs</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
 
-        <!-- Nav -->
-        <nav id="nav">
-            <ul>
-                <li class="current"><a href="index.html">Home</a></li>
-                <li><a href="#">Book Flights</a></li>
-                <li><a href="#">Hotels</a></li>
-                <li><a href="#">Cabs</a></li>
-                <li><a href="#">Trains</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+  <!-- Banner with photo -->
+  <section id="banner">
+    <header>
+      <h2>Discover Your Next Adventure</h2>
+      <p>Flights • Hotels • Cabs • Hassle‑free Booking</p>
+      <a href="https://wa.me/91XXXXXXXXXX" class="button">Book on WhatsApp</a>
+    </header>
+    <img src="<your-image-URL>" alt="Travel Hero" style="width:100%; opacity:0.75;"/>
+  </section>
+
+  <!-- Highlights -->
+  <section class="wrapper style1">
+    <div class="container">
+      <div class="row gtr-200">
+        <section class="col-4 col-12-narrower highlight" id="flights">
+          <i class="icon solid major fa-plane"></i>
+          <h3>Flight Booking</h3>
+          <p>Get low fares to your favourite destinations.</p>
+        </section>
+        <section class="col-4 col-12-narrower highlight" id="hotels">
+          <i class="icon solid major fa-bed"></i>
+          <h3>Hotel Reservations</h3>
+          <p>Cozy stays, 5★ luxury, or family rooms—we have you covered.</p>
+        </section>
+        <section class="col-4 col-12-narrower highlight" id="cabs">
+          <i class="icon solid major fa-car"></i>
+          <h3>Cab Services</h3>
+          <p>Safe & reliable rides for local transfers.</p>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <!-- Photo Gallery -->
+  <section class="wrapper style2">
+    <div class="container">
+      <header class="major">
+        <h2>Explore with Us</h2>
+        <p>Check out some of our favourite getaway moments</p>
+      </header>
+      <div class="row">
+        <div class="col-4"><img src=" https://www.freepik.com/free-photo/top-view-hand-holding-smartphone_30827157.htm#fromView=keyword&page=1&position=1&uuid=1f2d3dcc-f3a0-4d24-83bb-8dd312a4e6a6&query=Travel+Management>" alt="Destination 1" style="border-radius:8px;"/></div>
+        <div class="col-4"><img src=" https://www.freepik.com/free-photo/medium-shot-people-travel-agency_66257369.htm#fromView=keyword&page=1&position=48&uuid=991769b2-1bc5-4950-be01-7cca3cdeb3eb&query=Travel+Management" alt="Destination 2" style="border-radius:8px;"/></div>
+        <div class="col-4"><img src=" https://www.freepik.com/free-photo/front-view-female-vacation-holding-her-tickets-blue-desk-journey-sea-woman-trip-vacation-summer_14151471.htm#fromView=keyword&page=1&position=46&uuid=604d6a9a-e039-4409-bac4-b21406e7b86e&query=Travel+Management" alt="Destination 3" style="border-radius:8px;"/></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section id="cta" class="wrapper style3">
+    <div class="container">
+      <header>
+        <h2>Ready to Book?</h2>
+        <a href="https://wa.me/91XXXXXXXXXX" class="button">Chat Now</a>
+      </header>
+    </div>
+  </section>
+
+  <!-- Footer / Contact -->
+  <div id="footer">
+    <div class="container">
+      <div class="row">
+        <section class="col-6 col-12-narrower" id="contact">
+          <h3>Contact Us</h3>
+          <p>📞 WhatsApp: <a href="https://wa.me/91XXXXXXXXXX">+91 XXXXXXXXXX</a></p>
+          <p>📧 Email: <a href="mailto:your@email.com">your@email.com</a></p>
+        </section>
+        <section class="col-6 col-12-narrower">
+          <h3>Quick Links</h3>
+          <ul class="links">
+            <li><a href="#flights">Flight Deals</a></li>
+            <li><a href="#hotels">Top Hotels</a></li>
+            <li><a href="#cabs">Cab Services</a></li>
+            <li><a href="#contact">Support</a></li>
+          </ul>
+        </section>
+      </div>
     </div>
 
-    <!-- Banner -->
-    <section id="banner">
-        <header>
-            <h2>Welcome to TravEasy Travels</h2>
-            <p>Plan, Book & Travel Smart – Flights, Hotels, Cabs & More</p>
-            <a href="https://wa.me/91XXXXXXXXXX" class="button">Book on WhatsApp</a>
-        </header>
-    </section>
+    <ul class="icons">
+      <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+      <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+      <li><a href="https://wa.me/91XXXXXXXXXX" class="icon brands fa-whatsapp"><span class="label">WhatsApp</span></a></li>
+    </ul>
 
-    <!-- Highlights -->
-    <section class="wrapper style1">
-        <div class="container">
-            <div class="row gtr-200">
-                <section class="col-4 col-12-narrower">
-                    <div class="box highlight">
-                        <i class="icon solid major fa-plane"></i>
-                        <h3>Flight Booking</h3>
-                        <p>Find and book the cheapest flights for your next trip.</p>
-                    </div>
-                </section>
-                <section class="col-4 col-12-narrower">
-                    <div class="box highlight">
-                        <i class="icon solid major fa-bed"></i>
-                        <h3>Hotel Booking</h3>
-                        <p>Choose from a wide range of budget and luxury hotels.</p>
-                    </div>
-                </section>
-                <section class="col-4 col-12-narrower">
-                    <div class="box highlight">
-                        <i class="icon solid major fa-car"></i>
-                        <h3>Cab Services</h3>
-                        <p>Reliable and safe cab services available 24/7.</p>
-                    </div>
-                </section>
-            </div>
-        </div>
-    </section>
-
-    <!-- Gigantic Heading -->
-    <section class="wrapper style2">
-        <div class="container">
-            <header class="major">
-                <h2>Your One-Stop Travel Partner</h2>
-                <p>We make your journeys easier, faster, and more affordable.</p>
-            </header>
-        </div>
-    </section>
-
-    <!-- Posts -->
-    <section class="wrapper style1">
-        <div class="container">
-            <div class="row">
-                <section class="col-6 col-12-narrower">
-                    <div class="box post">
-                        <a href="#" class="image left"><img src="images/pic01.jpg" alt="" /></a>
-                        <div class="inner">
-                            <h3>Business Trips</h3>
-                            <p>We help professionals book fast and efficient business travel – with 24/7 support.</p>
-                        </div>
-                    </div>
-                </section>
-                <section class="col-6 col-12-narrower">
-                    <div class="box post">
-                        <a href="#" class="image left"><img src="images/pic02.jpg" alt="" /></a>
-                        <div class="inner">
-                            <h3>Family Vacations</h3>
-                            <p>From beach resorts to hill stations – we have something for every family trip.</p>
-                        </div>
-                    </div>
-                </section>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA -->
-    <section id="cta" class="wrapper style3">
-        <div class="container">
-            <header>
-                <h2>Need Help Planning Your Trip?</h2>
-                <a href="https://wa.me/91XXXXXXXXXX" class="button">Chat on WhatsApp</a>
-            </header>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <div id="footer">
-        <div class="container">
-            <div class="row">
-                <section class="col-6 col-12-narrower" id="contact">
-                    <h3>Get In Touch</h3>
-                    <p>📞 Call/WhatsApp: <a href="https://wa.me/91XXXXXXXXXX">+91XXXXXXXXXX</a></p>
-                    <p>📧 Email: <a href="mailto:your@email.com">your@email.com</a></p>
-                </section>
-                <section class="col-6 col-12-narrower">
-                    <h3>Quick Links</h3>
-                    <ul class="links">
-                        <li><a href="#">Flight Deals</a></li>
-                        <li><a href="#">Train Schedules</a></li>
-                        <li><a href="#">Holiday Packages</a></li>
-                        <li><a href="#">24/7 Customer Support</a></li>
-                    </ul>
-                </section>
-            </div>
-        </div>
-
-        <!-- Icons -->
-        <ul class="icons">
-            <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-            <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-            <li><a href="#" class="icon brands fa-whatsapp"><span class="label">WhatsApp</span></a></li>
-        </ul>
-
-        <!-- Copyright -->
-        <div class="copyright">
-            <ul class="menu">
-                <li>&copy; 2025 TravEasy Travels. All rights reserved.</li>
-                <li>Design adapted from <a href="http://html5up.net">HTML5 UP</a></li>
-            </ul>
-        </div>
+    <div class="copyright">
+      <ul class="menu">
+        <li>&copy; 2025 TravEasy Travels. All rights reserved.</li>
+        <li>Design adapted from <a href="http://html5up.net">HTML5 UP</a></li>
+      </ul>
     </div>
+  </div>
 
 </div>
 
