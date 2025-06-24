@@ -1,8 +1,3 @@
-# TravEasy - Complete Travel Booking Website
-
-Here's a dynamic, visually appealing website for your travel business with all the requested features and attractive imagery in each section:
-
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,158 +8,27 @@ Here's a dynamic, visually appealing website for your travel business with all t
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Swiper JS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
-    <!-- Custom CSS -->
+    <!-- jQuery UI for autocomplete -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <style>
-        :root {
-            --primary: #2a52be;
-            --secondary: #ff7e33;
-            --accent: #ffd700;
-            --dark: #1a1a2e;
-            --light: #f8f9fa;
-            --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-        }
+        /* Previous CSS remains the same, adding new styles below */
         
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-            color: #333;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-        
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            color: var(--dark);
-        }
-        
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* Header Styles */
-        header {
-            background: rgba(255, 255, 255, 0.97);
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            width: 100%;
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-        
-        header.scrolled {
-            background: rgba(255, 255, 255, 0.98);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
-        }
-        
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 0;
-        }
-        
-        .logo {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--primary);
-        }
-        
-        .logo span {
-            color: var(--secondary);
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-        
-        nav ul li {
-            margin-left: 30px;
-        }
-        
-        nav ul li a {
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        
-        nav ul li a:hover {
-            color: var(--primary);
-        }
-        
-        .auth-buttons .btn {
-            margin-left: 15px;
-        }
-        
-        /* Hero Section */
-        .hero {
-            background: url('https://images.unsplash.com/photo-1506929562872-bb421503ef21?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            color: white;
-            text-align: center;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            width: 100%;
-        }
-        
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            color: white;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 30px;
-        }
-        
-        /* Search Box */
-        .search-box {
+        .search-results {
+            display: none;
+            margin-top: 40px;
             background: white;
             border-radius: 10px;
             padding: 20px;
-            max-width: 900px;
-            margin: 0 auto;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
-        .search-tabs {
+        .result-tabs {
             display: flex;
-            margin-bottom: 20px;
             border-bottom: 1px solid #eee;
+            margin-bottom: 20px;
         }
         
-        .search-tab {
+        .result-tab {
             padding: 10px 20px;
             cursor: pointer;
             font-weight: 500;
@@ -172,11 +36,11 @@ Here's a dynamic, visually appealing website for your travel business with all t
             position: relative;
         }
         
-        .search-tab.active {
+        .result-tab.active {
             color: var(--primary);
         }
         
-        .search-tab.active::after {
+        .result-tab.active::after {
             content: '';
             position: absolute;
             bottom: -1px;
@@ -186,863 +50,661 @@ Here's a dynamic, visually appealing website for your travel business with all t
             background: var(--primary);
         }
         
-        .search-form {
+        .provider-results {
+            display: none;
+        }
+        
+        .provider-results.active {
+            display: block;
+        }
+        
+        .hotel-card, .flight-card, .train-card, .cab-card {
+            display: flex;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+        
+        .hotel-card:hover, .flight-card:hover, .train-card:hover, .cab-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .hotel-img, .cab-img {
+            width: 200px;
+            height: 150px;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        
+        .hotel-img img, .cab-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .hotel-info, .flight-info, .train-info, .cab-info {
+            flex-grow: 1;
+        }
+        
+        .hotel-name, .flight-route, .train-route, .cab-type {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+        
+        .hotel-location, .flight-details, .train-details, .cab-details {
+            color: #666;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+        
+        .hotel-amenities {
             display: flex;
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 10px;
+            margin-bottom: 10px;
         }
         
-        .form-group {
-            flex: 1;
-            min-width: 200px;
+        .amenity {
+            background: #f0f8ff;
+            color: var(--primary);
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
         }
         
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 500;
+        .price-container {
+            text-align: right;
+            margin-left: 20px;
+            min-width: 150px;
         }
         
-        .form-group input, .form-group select {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-family: 'Poppins', sans-serif;
+        .price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
         }
         
-        .search-btn {
+        .per-night {
+            font-size: 0.8rem;
+            color: #666;
+        }
+        
+        .book-btn {
             background: var(--primary);
             color: white;
             border: none;
-            padding: 12px 30px;
-            border-radius: 5px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            align-self: flex-end;
-        }
-        
-        .search-btn:hover {
-            background: var(--secondary);
-            transform: translateY(-2px);
-        }
-        
-        /* Services Section */
-        .services {
-            padding: 80px 0;
-            background: var(--light);
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-        
-        .section-title h2 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-        }
-        
-        .section-title p {
-            color: #666;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-        
-        .service-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .service-img {
-            height: 180px;
-            overflow: hidden;
-        }
-        
-        .service-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-        
-        .service-card:hover .service-img img {
-            transform: scale(1.1);
-        }
-        
-        .service-content {
-            padding: 20px;
-        }
-        
-        .service-content h3 {
-            margin-bottom: 10px;
-        }
-        
-        .service-content p {
-            color: #666;
-            margin-bottom: 15px;
-            font-size: 0.9rem;
-        }
-        
-        .service-link {
-            display: inline-block;
-            color: var(--primary);
-            font-weight: 500;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .service-link:hover {
-            color: var(--secondary);
-        }
-        
-        /* Destinations Section */
-        .destinations {
-            padding: 80px 0;
-        }
-        
-        .destinations-slider {
-            margin-top: 40px;
-        }
-        
-        .destination-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            margin: 10px;
-        }
-        
-        .destination-img {
-            height: 200px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .destination-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .destination-price {
-            position: absolute;
-            bottom: 15px;
-            right: 15px;
-            background: var(--primary);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-weight: 600;
-        }
-        
-        .destination-content {
-            padding: 20px;
-        }
-        
-        .destination-content h3 {
-            margin-bottom: 5px;
-        }
-        
-        .destination-content p {
-            color: #666;
-            font-size: 0.9rem;
-            margin-bottom: 15px;
-        }
-        
-        .rating {
-            color: var(--accent);
-            margin-bottom: 10px;
-        }
-        
-        .btn {
-            display: inline-block;
-            background: var(--primary);
-            color: white;
             padding: 8px 20px;
             border-radius: 5px;
-            text-decoration: none;
             font-weight: 500;
+            cursor: pointer;
             transition: all 0.3s;
+            margin-top: 10px;
         }
         
-        .btn:hover {
+        .book-btn:hover {
             background: var(--secondary);
-            transform: translateY(-2px);
         }
         
-        /* Testimonials Section */
-        .testimonials {
-            padding: 80px 0;
-            background: var(--light);
+        .provider-logo {
+            height: 30px;
+            margin-bottom: 10px;
         }
         
-        .testimonial-slider {
-            margin-top: 40px;
+        /* Flight specific styles */
+        .flight-card {
+            align-items: center;
+            justify-content: space-between;
         }
         
-        .testimonial-card {
-            background: white;
-            border-radius: 10px;
-            padding: 30px;
-            margin: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            position: relative;
+        .flight-time {
+            font-weight: 600;
+            font-size: 1.1rem;
         }
         
-        .testimonial-card::before {
-            content: '"';
-            font-family: 'Playfair Display', serif;
-            font-size: 5rem;
-            color: rgba(0, 0, 0, 0.05);
-            position: absolute;
-            top: 10px;
-            left: 20px;
-            line-height: 1;
+        .flight-duration {
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
         }
         
-        .testimonial-text {
-            position: relative;
-            z-index: 1;
-            margin-bottom: 20px;
-            font-style: italic;
-        }
-        
-        .testimonial-author {
+        .flight-airline {
             display: flex;
             align-items: center;
         }
         
-        .author-img {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin-right: 15px;
+        .airline-logo {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
         }
         
-        .author-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        /* Train specific styles */
+        .train-card {
+            align-items: center;
+            justify-content: space-between;
         }
         
-        .author-info h4 {
-            margin-bottom: 5px;
-        }
-        
-        .author-info p {
+        .train-number {
             color: #666;
             font-size: 0.9rem;
         }
         
-        /* Offers Section */
-        .offers {
-            padding: 80px 0;
+        /* Cab specific styles */
+        .cab-card {
+            align-items: center;
         }
         
-        .offers-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-        
-        .offer-card {
-            border-radius: 10px;
-            overflow: hidden;
-            position: relative;
-            height: 200px;
-        }
-        
-        .offer-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .offer-content {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 20px;
-            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-            color: white;
-        }
-        
-        .offer-content h3 {
-            margin-bottom: 5px;
-            color: white;
-        }
-        
-        .offer-content p {
-            margin-bottom: 10px;
-            font-size: 0.9rem;
-        }
-        
-        /* CTA Section */
-        .cta {
-            padding: 100px 0;
-            background: var(--gradient);
-            color: white;
-            text-align: center;
-        }
-        
-        .cta h2 {
-            color: white;
-            margin-bottom: 20px;
-        }
-        
-        .cta p {
-            max-width: 700px;
-            margin: 0 auto 30px;
-            font-size: 1.1rem;
-        }
-        
-        .cta-btn {
-            background: white;
-            color: var(--primary);
-            padding: 12px 35px;
-            font-weight: 600;
-            border-radius: 50px;
-            text-decoration: none;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s;
-        }
-        
-        .cta-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-        
-        /* Footer */
-        footer {
-            background: var(--dark);
-            color: white;
-            padding: 60px 0 30px;
-        }
-        
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-        
-        .footer-col h3 {
-            color: white;
-            margin-bottom: 20px;
-            font-size: 1.2rem;
-        }
-        
-        .footer-col ul {
-            list-style: none;
-        }
-        
-        .footer-col ul li {
-            margin-bottom: 10px;
-        }
-        
-        .footer-col ul li a {
-            color: #bbb;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .footer-col ul li a:hover {
-            color: white;
-        }
-        
-        .footer-col p {
-            color: #bbb;
-            margin-bottom: 15px;
-        }
-        
-        .social-links {
+        .cab-features {
             display: flex;
-            gap: 15px;
+            gap: 10px;
+            margin-bottom: 10px;
         }
         
-        .social-links a {
-            color: white;
-            font-size: 1.2rem;
-            transition: all 0.3s;
+        .feature {
+            background: #f0f8ff;
+            color: var(--primary);
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
         }
         
-        .social-links a:hover {
-            color: var(--secondary);
-            transform: translateY(-3px);
-        }
-        
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 20px;
+        /* Loading animation */
+        .loading {
+            display: none;
             text-align: center;
-            color: #bbb;
-            font-size: 0.9rem;
+            padding: 20px;
         }
         
-        /* Responsive Styles */
-        @media (max-width: 768px) {
-            .header-container {
-                flex-direction: column;
-                padding: 15px;
-            }
-            
-            nav ul {
-                margin-top: 15px;
-            }
-            
-            nav ul li {
-                margin-left: 15px;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .search-form {
-                flex-direction: column;
-            }
-            
-            .form-group {
-                width: 100%;
-            }
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(0,0,0,0.1);
+            border-radius: 50%;
+            border-top-color: var(--primary);
+            animation: spin 1s ease-in-out infinite;
+            margin: 0 auto 15px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header id="header">
-        <div class="container header-container">
-            <a href="#" class="logo">Trav<span>Easy</span></a>
-            <nav>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#destinations">Destinations</a></li>
-                    <li><a href="#offers">Offers</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-            <div class="auth-buttons">
-                <a href="#" class="btn">Login</a>
-                <a href="#" class="btn">Sign Up</a>
-            </div>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container hero-content">
-            <h1>Making Every Journey Easy</h1>
-            <p>Your all-in-one travel partner for hotels, flights, trains, buses, and cabs. Book your perfect trip in just a few clicks!</p>
-            
-            <!-- Search Box -->
-            <div class="search-box">
-                <div class="search-tabs">
-                    <div class="search-tab active">Hotels</div>
-                    <div class="search-tab">Flights</div>
-                    <div class="search-tab">Trains</div>
-                    <div class="search-tab">Buses</div>
-                    <div class="search-tab">Cabs</div>
-                </div>
-                
-                <form class="search-form">
-                    <div class="form-group">
-                        <label for="destination">Destination</label>
-                        <input type="text" id="destination" placeholder="Where are you going?">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="check-in">Check-in</label>
-                        <input type="date" id="check-in">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="check-out">Check-out</label>
-                        <input type="date" id="check-out">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="guests">Guests</label>
-                        <select id="guests">
-                            <option value="1">1 Guest</option>
-                            <option value="2">2 Guests</option>
-                            <option value="3">3 Guests</option>
-                            <option value="4">4 Guests</option>
-                            <option value="family">Family</option>
-                        </select>
-                    </div>
-                    
-                    <button type="submit" class="search-btn">Search</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section class="services" id="services">
+    <!-- Header and Hero sections remain the same as before -->
+    
+    <!-- Search Results Section (New) -->
+    <section class="search-results" id="searchResults">
         <div class="container">
-            <div class="section-title">
-                <h2>Our Services</h2>
-                <p>Everything you need for a perfect journey, all in one place</p>
+            <div class="result-tabs">
+                <div class="result-tab active" data-tab="hotels">Hotels</div>
+                <div class="result-tab" data-tab="flights">Flights</div>
+                <div class="result-tab" data-tab="trains">Trains</div>
+                <div class="result-tab" data-tab="cabs">Cabs</div>
             </div>
             
-            <div class="services-grid">
-                <!-- Hotel Booking -->
-                <div class="service-card">
-                    <div class="service-img">
-                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Hotel Booking">
-                    </div>
-                    <div class="service-content">
-                        <h3>Hotel Booking</h3>
-                        <p>Discover and book the best hotels across India and beyond. From luxury resorts to budget stays.</p>
-                        <a href="#" class="service-link">Book Now →</a>
-                    </div>
-                </div>
-                
-                <!-- Flight Booking -->
-                <div class="service-card">
-                    <div class="service-img">
-                        <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Flight Booking">
-                    </div>
-                    <div class="service-content">
-                        <h3>Flight Booking</h3>
-                        <p>Compare prices and book domestic or international flights at unbeatable rates.</p>
-                        <a href="#" class="service-link">Book Now →</a>
-                    </div>
-                </div>
-                
-                <!-- Train Booking -->
-                <div class="service-card">
-                    <div class="service-img">
-                        <img src="https://images.unsplash.com/photo-1516054575922-f0b8eeadec1a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Train Booking">
-                    </div>
-                    <div class="service-content">
-                        <h3>Train Booking</h3>
-                        <p>Book your train tickets swiftly through our IRCTC-integrated platform.</p>
-                        <a href="#" class="service-link">Book Now →</a>
-                    </div>
-                </div>
-                
-                <!-- Bus Booking -->
-                <div class="service-card">
-                    <div class="service-img">
-                        <img src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Bus Booking">
-                    </div>
-                    <div class="service-content">
-                        <h3>Bus Booking</h3>
-                        <p>Choose from AC, sleeper, and luxury buses across major Indian cities.</p>
-                        <a href="#" class="service-link">Book Now →</a>
-                    </div>
-                </div>
-                
-                <!-- Cab Booking -->
-                <div class="service-card">
-                    <div class="service-img">
-                        <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Cab Booking">
-                    </div>
-                    <div class="service-content">
-                        <h3>Cab Booking</h3>
-                        <p>Book reliable and safe cabs for city rides, airport transfers, or outstation trips.</p>
-                        <a href="#" class="service-link">Book Now →</a>
-                    </div>
-                </div>
-                
-                <!-- Holiday Packages -->
-                <div class="service-card">
-                    <div class="service-img">
-                        <img src="https://images.unsplash.com/photo-1503917988258-f87a78e3c995?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Holiday Packages">
-                    </div>
-                    <div class="service-content">
-                        <h3>Holiday Packages</h3>
-                        <p>Explore curated travel packages for families, couples, and religious groups.</p>
-                        <a href="#" class="service-link">Explore →</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Destinations Section -->
-    <section class="destinations" id="destinations">
-        <div class="container">
-            <div class="section-title">
-                <h2>Popular Destinations</h2>
-                <p>Discover these amazing places with our special packages</p>
+            <div class="loading">
+                <div class="spinner"></div>
+                <p>Searching for the best options...</p>
             </div>
             
-            <div class="destinations-slider swiper">
-                <div class="swiper-wrapper">
-                    <!-- Destination 1 -->
-                    <div class="destination-card swiper-slide">
-                        <div class="destination-img">
-                            <img src="https://images.unsplash.com/photo-1582977312208-67703a9a9e9b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Goa">
-                            <div class="destination-price">From ₹8,999</div>
+            <!-- Hotels Results -->
+            <div class="provider-results active" id="hotels-results">
+                <h3>Hotels in <span id="search-location">Mumbai</span></h3>
+                
+                <div class="result-tabs">
+                    <div class="result-tab active" data-provider="all">All</div>
+                    <div class="result-tab" data-provider="makemytrip">MakeMyTrip</div>
+                    <div class="result-tab" data-provider="goibibo">Goibibo</div>
+                    <div class="result-tab" data-provider="booking">Booking.com</div>
+                    <div class="result-tab" data-provider="agoda">Agoda</div>
+                </div>
+                
+                <div class="hotels-list">
+                    <!-- Sample Hotel Card 1 -->
+                    <div class="hotel-card" data-provider="makemytrip">
+                        <div class="hotel-img">
+                            <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Taj Hotel">
                         </div>
-                        <div class="destination-content">
-                            <h3>Goa</h3>
-                            <p>Beaches, nightlife and Portuguese heritage</p>
+                        <div class="hotel-info">
+                            <h4 class="hotel-name">Taj Lands End</h4>
+                            <p class="hotel-location">Bandra West, Mumbai</p>
+                            <div class="hotel-amenities">
+                                <span class="amenity">Free WiFi</span>
+                                <span class="amenity">Pool</span>
+                                <span class="amenity">Spa</span>
+                                <span class="amenity">Restaurant</span>
+                            </div>
                             <div class="rating">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star-half-alt"></i>
+                                <span>(428 reviews)</span>
                             </div>
-                            <a href="#" class="btn">View Packages</a>
+                        </div>
+                        <div class="price-container">
+                            <div class="price">₹8,499</div>
+                            <div class="per-night">per night</div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/71/MakeMyTrip_Logo.png" alt="MakeMyTrip" class="provider-logo" style="height: 25px;">
+                            <button class="book-btn">Book Now</button>
                         </div>
                     </div>
                     
-                    <!-- Destination 2 -->
-                    <div class="destination-card swiper-slide">
-                        <div class="destination-img">
-                            <img src="https://images.unsplash.com/photo-1587474260584-136574528ed5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Kerala">
-                            <div class="destination-price">From ₹7,499</div>
+                    <!-- Sample Hotel Card 2 -->
+                    <div class="hotel-card" data-provider="goibibo">
+                        <div class="hotel-img">
+                            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Trident Hotel">
                         </div>
-                        <div class="destination-content">
-                            <h3>Kerala</h3>
-                            <p>Backwaters, ayurveda and lush greenery</p>
+                        <div class="hotel-info">
+                            <h4 class="hotel-name">Trident Nariman Point</h4>
+                            <p class="hotel-location">Nariman Point, Mumbai</p>
+                            <div class="hotel-amenities">
+                                <span class="amenity">Free WiFi</span>
+                                <span class="amenity">Breakfast</span>
+                                <span class="amenity">Beach View</span>
+                                <span class="amenity">AC</span>
+                            </div>
                             <div class="rating">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <i class="far fa-star"></i>
+                                <span>(312 reviews)</span>
                             </div>
-                            <a href="#" class="btn">View Packages</a>
+                        </div>
+                        <div class="price-container">
+                            <div class="price">₹7,200</div>
+                            <div class="per-night">per night</div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Goibibo_logo.png" alt="Goibibo" class="provider-logo">
+                            <button class="book-btn">Book Now</button>
                         </div>
                     </div>
                     
-                    <!-- Destination 3 -->
-                    <div class="destination-card swiper-slide">
-                        <div class="destination-img">
-                            <img src="https://images.unsplash.com/photo-1528123778682-0d7d8fa99052?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Rajasthan">
-                            <div class="destination-price">From ₹6,999</div>
-                        </div>
-                        <div class="destination-content">
-                            <h3>Rajasthan</h3>
-                            <p>Royal palaces, desert safaris and vibrant culture</p>
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <a href="#" class="btn">View Packages</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Destination 4 -->
-                    <div class="destination-card swiper-slide">
-                        <div class="destination-img">
-                            <img src="https://images.unsplash.com/photo-1566438480900-0609be27a4be?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Himachal">
-                            <div class="destination-price">From ₹9,499</div>
-                        </div>
-                        <div class="destination-content">
-                            <h3>Himachal Pradesh</h3>
-                            <p>Snowy mountains, adventure sports and monasteries</p>
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                            </div>
-                            <a href="#" class="btn">View Packages</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Destination 5 -->
-                    <div class="destination-card swiper-slide">
-                        <div class="destination-img">
-                            <img src="https://images.unsplash.com/photo-1565498255681-48a3b11c6dc9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Tirupati">
-                            <div class="destination-price">From ₹5,999</div>
-                        </div>
-                        <div class="destination-content">
-                            <h3>Tirupati</h3>
-                            <p>Spiritual journey to the abode of Lord Venkateswara</p>
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <a href="#" class="btn">View Packages</a>
-                        </div>
-                    </div>
+                    <!-- More hotel cards would be loaded here dynamically -->
                 </div>
-                <!-- Add Pagination -->
-                <div class="swiper-pagination"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="testimonials" id="testimonials">
-        <div class="container">
-            <div class="section-title">
-                <h2>What Our Travelers Say</h2>
-                <p>Hear from our happy customers about their experiences</p>
             </div>
             
-            <div class="testimonial-slider swiper">
-                <div class="swiper-wrapper">
-                    <!-- Testimonial 1 -->
-                    <div class="testimonial-card swiper-slide">
-                        <div class="testimonial-text">
-                            <p>Booking through TravEasy was seamless. Their customer support helped me when I needed to make last-minute changes to my hotel booking in Goa. Highly recommended!</p>
-                        </div>
-                        <div class="testimonial-author">
-                            <div class="author-img">
-                                <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Priya Sharma">
-                            </div>
-                            <div class="author-info">
-                                <h4>Priya Sharma</h4>
-                                <p>Family Vacation, Goa</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Testimonial 2 -->
-                    <div class="testimonial-card swiper-slide">
-                        <div class="testimonial-text">
-                            <p>The train booking feature with PNR status updates is fantastic. I could easily plan my pilgrimage to Tirupati without any hassle. Will definitely use again!</p>
-                        </div>
-                        <div class="testimonial-author">
-                            <div class="author-img">
-                                <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Rajesh Patel">
-                            </div>
-                            <div class="author-info">
-                                <h4>Rajesh Patel</h4>
-                                <p>Religious Tour, Tirupati</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Testimonial 3 -->
-                    <div class="testimonial-card swiper-slide">
-                        <div class="testimonial-text">
-                            <p>Our honeymoon package to Kerala was perfectly arranged. The backwater houseboat experience was magical, and all transfers were punctual. Thank you TravEasy!</p>
-                        </div>
-                        <div class="testimonial-author">
-                            <div class="author-img">
-                                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Ananya & Rohan">
-                            </div>
-                            <div class="author-info">
-                                <h4>Ananya & Rohan</h4>
-                                <p>Honeymoon, Kerala</p>
-                            </div>
-                        </div>
-                    </div>
+            <!-- Flights Results -->
+            <div class="provider-results" id="flights-results">
+                <h3>Flights from <span id="flight-from">Delhi</span> to <span id="flight-to">Mumbai</span></h3>
+                
+                <div class="result-tabs">
+                    <div class="result-tab active" data-provider="all">All</div>
+                    <div class="result-tab" data-provider="makemytrip">MakeMyTrip</div>
+                    <div class="result-tab" data-provider="goibibo">Goibibo</div>
+                    <div class="result-tab" data-provider="yatra">Yatra</div>
+                    <div class="result-tab" data-provider="cleartrip">Cleartrip</div>
                 </div>
-                <!-- Add Pagination -->
-                <div class="swiper-pagination"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Offers Section -->
-    <section class="offers" id="offers">
-        <div class="container">
-            <div class="section-title">
-                <h2>Special Offers</h2>
-                <p>Don't miss these exclusive deals on your next trip</p>
+                
+                <div class="flights-list">
+                    <!-- Sample Flight Card 1 -->
+                    <div class="flight-card" data-provider="makemytrip">
+                        <div class="flight-info">
+                            <div class="flight-airline">
+                                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9b/IndiGo_Logo.svg/1200px-IndiGo_Logo.svg.png" alt="IndiGo" class="airline-logo">
+                                <span>IndiGo</span>
+                            </div>
+                            <div class="flight-number">6E-208</div>
+                        </div>
+                        <div class="flight-time">
+                            <div>DEL 06:00</div>
+                            <div class="flight-duration">2h 10m</div>
+                            <div>BOM 08:10</div>
+                        </div>
+                        <div class="price-container">
+                            <div class="price">₹3,499</div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/71/MakeMyTrip_Logo.png" alt="MakeMyTrip" class="provider-logo" style="height: 25px;">
+                            <button class="book-btn">Book Now</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Sample Flight Card 2 -->
+                    <div class="flight-card" data-provider="goibibo">
+                        <div class="flight-info">
+                            <div class="flight-airline">
+                                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/5/57/Vistara_logo.svg/1200px-Vistara_logo.svg.png" alt="Vistara" class="airline-logo">
+                                <span>Vistara</span>
+                            </div>
+                            <div class="flight-number">UK-925</div>
+                        </div>
+                        <div class="flight-time">
+                            <div>DEL 09:15</div>
+                            <div class="flight-duration">2h 5m</div>
+                            <div>BOM 11:20</div>
+                        </div>
+                        <div class="price-container">
+                            <div class="price">₹4,200</div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Goibibo_logo.png" alt="Goibibo" class="provider-logo">
+                            <button class="book-btn">Book Now</button>
+                        </div>
+                    </div>
+                    
+                    <!-- More flight cards would be loaded here dynamically -->
+                </div>
             </div>
             
-            <div class="offers-grid">
-                <!-- Offer 1 -->
-                <div class="offer-card">
-                    <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Summer Special">
-                    <div class="offer-content">
-                        <h3>Summer Special</h3>
-                        <p>Up to 30% off on hill station packages</p>
-                        <a href="#" class="btn">Grab Deal</a>
-                    </div>
+            <!-- Trains Results -->
+            <div class="provider-results" id="trains-results">
+                <h3>Trains from <span id="train-from">Delhi</span> to <span id="train-to">Mumbai</span></h3>
+                
+                <div class="result-tabs">
+                    <div class="result-tab active" data-provider="all">All</div>
+                    <div class="result-tab" data-provider="irctc">IRCTC</div>
+                    <div class="result-tab" data-provider="makemytrip">MakeMyTrip</div>
+                    <div class="result-tab" data-provider="railyatri">RailYatri</div>
                 </div>
                 
-                <!-- Offer 2 -->
-                <div class="offer-card">
-                    <img src="https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Early Bird">
-                    <div class="offer-content">
-                        <h3>Early Bird</h3>
-                        <p>Book 60 days in advance & save 25%</p>
-                        <a href="#" class="btn">Grab Deal</a>
+                <div class="trains-list">
+                    <!-- Sample Train Card 1 -->
+                    <div class="train-card" data-provider="irctc">
+                        <div class="train-info">
+                            <h4 class="train-route">Rajdhani Express</h4>
+                            <p class="train-number">12951</p>
+                            <p class="train-details">NDLS (17:35) → BCT (08:35) | Duration: 15h 0m</p>
+                        </div>
+                        <div class="price-container">
+                            <div class="price">₹1,950</div>
+                            <div>2A</div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/IRCTC_Logo.svg/1200px-IRCTC_Logo.svg.png" alt="IRCTC" class="provider-logo" style="height: 25px;">
+                            <button class="book-btn">Book Now</button>
+                        </div>
                     </div>
+                    
+                    <!-- Sample Train Card 2 -->
+                    <div class="train-card" data-provider="makemytrip">
+                        <div class="train-info">
+                            <h4 class="train-route">Duronto Express</h4>
+                            <p class="train-number">12213</p>
+                            <p class="train-details">NZM (23:00) → CSTM (15:20) | Duration: 16h 20m</p>
+                        </div>
+                        <div class="price-container">
+                            <div class="price">₹1,750</div>
+                            <div>3A</div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/71/MakeMyTrip_Logo.png" alt="MakeMyTrip" class="provider-logo" style="height: 25px;">
+                            <button class="book-btn">Book Now</button>
+                        </div>
+                    </div>
+                    
+                    <!-- More train cards would be loaded here dynamically -->
+                </div>
+            </div>
+            
+            <!-- Cabs Results -->
+            <div class="provider-results" id="cabs-results">
+                <h3>Cabs in <span id="cab-location">Mumbai</span></h3>
+                
+                <div class="result-tabs">
+                    <div class="result-tab active" data-provider="all">All</div>
+                    <div class="result-tab" data-provider="ola">Ola</div>
+                    <div class="result-tab" data-provider="uber">Uber</div>
+                    <div class="result-tab" data-provider="makemytrip">MakeMyTrip</div>
                 </div>
                 
-                <!-- Offer 3 -->
-                <div class="offer-card">
-                    <img src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Weekend Getaway">
-                    <div class="offer-content">
-                        <h3>Weekend Getaway</h3>
-                        <p>Special prices on short trips</p>
-                        <a href="#" class="btn">Grab Deal</a>
+                <div class="cabs-list">
+                    <!-- Sample Cab Card 1 -->
+                    <div class="cab-card" data-provider="ola">
+                        <div class="cab-img">
+                            <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Sedan Cab">
+                        </div>
+                        <div class="cab-info">
+                            <h4 class="cab-type">Ola Sedan</h4>
+                            <p class="cab-details">Toyota Etios or similar | 4 seats | AC</p>
+                            <div class="cab-features">
+                                <span class="feature">AC</span>
+                                <span class="feature">4 Seats</span>
+                                <span class="feature">Free Cancellation</span>
+                            </div>
+                        </div>
+                        <div class="price-container">
+                            <div class="price">₹1,499</div>
+                            <div>8 hrs / 80 km</div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Ola_Cabs_logo.svg/1200px-Ola_Cabs_logo.svg.png" alt="Ola" class="provider-logo">
+                            <button class="book-btn">Book Now</button>
+                        </div>
                     </div>
+                    
+                    <!-- Sample Cab Card 2 -->
+                    <div class="cab-card" data-provider="uber">
+                        <div class="cab-img">
+                            <img src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="SUV Cab">
+                        </div>
+                        <div class="cab-info">
+                            <h4 class="cab-type">Uber SUV</h4>
+                            <p class="cab-details">Toyota Innova or similar | 7 seats | AC</p>
+                            <div class="cab-features">
+                                <span class="feature">AC</span>
+                                <span class="feature">7 Seats</span>
+                                <span class="feature">Free Cancellation</span>
+                            </div>
+                        </div>
+                        <div class="price-container">
+                            <div class="price">₹2,199</div>
+                            <div>8 hrs / 80 km</div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Uber_logo_2018.svg/1200px-Uber_logo_2018.svg.png" alt="Uber" class="provider-logo">
+                            <button class="book-btn">Book Now</button>
+                        </div>
+                    </div>
+                    
+                    <!-- More cab cards would be loaded here dynamically -->
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta">
-        <div class="container">
-            <h2>Ready for Your Next Adventure?</h2>
-            <p>Download our mobile app for exclusive deals and easier booking on the go</p>
-            <a href="#" class="cta-btn">Download App</a>
-        </div>
-    </section>
+    <!-- Rest of your existing sections (Services, Destinations, etc.) -->
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h3>TravEasy</h3>
-                    <p>Making every journey easy with our comprehensive travel solutions. Your trusted partner for all travel needs.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    
+    <script>
+        $(document).ready(function() {
+            // Indian cities for autocomplete
+            const indianCities = [
+                "Mumbai", "Delhi", "Bangalore", "Hyderabad", "Ahmedabad", 
+                "Chennai", "Kolkata", "Surat", "Pune", "Jaipur", 
+                "Lucknow", "Kanpur", "Nagpur", "Indore", "Thane", 
+                "Bhopal", "Visakhapatnam", "Pimpri-Chinchwad", "Patna", "Vadodara",
+                "Ghaziabad", "Ludhiana", "Agra", "Nashik", "Faridabad",
+                "Meerut", "Rajkot", "Varanasi", "Srinagar", "Aurangabad",
+                "Dhanbad", "Amritsar", "Navi Mumbai", "Allahabad", "Howrah",
+                "Ranchi", "Gwalior", "Jabalpur", "Coimbatore", "Vijayawada",
+                "Jodhpur", "Madurai", "Raipur", "Kota", "Chandigarh",
+                "Guwahati", "Solapur", "Hubli-Dharwad", "Bareilly", "Moradabad",
+                "Mysore", "Gurgaon", "Aligarh", "Jalandhar", "Tiruchirappalli",
+                "Bhubaneswar", "Salem", "Warangal", "Guntur", "Bhiwandi",
+                "Saharanpur", "Gorakhpur", "Bikaner", "Amravati", "Noida",
+                "Jamshedpur", "Bhilai", "Cuttack", "Firozabad", "Kochi",
+                "Nellore", "Bhavnagar", "Dehradun", "Durgapur", "Asansol",
+                "Rourkela", "Nanded", "Kolhapur", "Ajmer", "Akola",
+                "Gulbarga", "Loni", "Ujjain", "Siliguri", "Jhansi",
+                "Ulhasnagar", "Jammu", "Sangli-Miraj & Kupwad", "Mangalore", "Erode",
+                "Belgaum", "Ambattur", "Tirunelveli", "Malegaon", "Gaya",
+                "Jalgaon", "Udaipur", "Maheshtala", "Tirupur", "Davanagere",
+                "Kozhikode", "Kurnool", "Rajpur Sonarpur", "Rajahmundry", "Bokaro",
+                "South Dumdum", "Bellary", "Patiala", "Gopalpur", "Agartala",
+                "Bhagalpur", "Muzaffarnagar", "Bhatpara", "Panihati", "Latur",
+                "Dhule", "Rohtak", "Korba", "Bhilwara", "Brahmapur",
+                "Muzaffarpur", "Ahmednagar", "Mathura", "Kollam", "Avadi",
+                "Kadapa", "Sambalpur", "Bilaspur", "Shahjahanpur", "Satara",
+                "Bijapur", "Rampur", "Shivamogga", "Chandrapur", "Junagadh",
+                "Thrissur", "Alwar", "Bardhaman", "Kulti", "Kakinada",
+                "Nizamabad", "Parbhani", "Tumkur", "Hisar", "Ozhukarai",
+                "Bihar Sharif", "Panipat", "Darbhanga", "Bally", "Aizawl",
+                "Dewas", "Ichalkaranji", "Karnal", "Bathinda", "Jalna",
+                "Eluru", "Barasat", "Kirari Suleman Nagar", "Purnia", "Satna",
+                "Mau", "Sonipat", "Farrukhabad", "Sagar", "Rourkela",
+                "Durg", "Imphal", "Ratlam", "Hapur", "Arrah",
+                "Karimnagar", "Anantapur", "Etawah", "Ambernath", "North Dumdum",
+                "Bharatpur", "Begusarai", "New Delhi", "Gandhidham", "Baranagar",
+                "Tiruvottiyur", "Puducherry", "Sikar", "Thoothukudi", "Rewa",
+                "Mirzapur", "Raichur", "Pali", "Ramagundam", "Haridwar",
+                "Vijayanagaram", "Katihar", "Nagercoil", "Sri Ganganagar", "Karawal Nagar",
+                "Mango", "Thanjavur", "Bulandshahr", "Uluberia", "Murwara",
+                "Sambhal", "Singrauli", "Nadiad", "Secunderabad", "Naihati",
+                "Yamunanagar", "Bidhan Nagar", "Pallavaram", "Bidar", "Munger",
+                "Panchkula", "Burhanpur", "Raurkela Industrial Township", "Kharagpur", "Dindigul",
+                "Gandhinagar", "Hospet", "Nangloi Jat", "Malda", "Ongole",
+                "Deoghar", "Chapra", "Haldia", "Khandwa", "Nandyal",
+                "Morena", "Amroha", "Anand", "Bhind", "Bhalswa Jahangir Pur",
+                "Madhyamgram", "Bhiwani", "Berhampur", "Ambala", "Morbi",
+                "Fatehpur", "Raebareli", "Khora", "Chittoor", "Bhusawal",
+                "Orai", "Bahraich", "Phusro", "Vellore", "Mehsana",
+                "Raiganj", "Sirsa", "Danapur", "Serampore", "Sultan Pur Majra",
+                "Guna", "Jaunpur", "Panvel", "Shivpuri", "Surendranagar Dudhrej",
+                "Unnao", "Hugli-Chinsurah", "Alappuzha", "Kottayam", "Machilipatnam",
+                "Shimla", "Adoni", "Udupi", "Tenali", "Proddatur",
+                "Saharsa", "Hindupur", "Sasaram", "Dibrugarh", "Jorhat",
+                "Hajipur", "Nagaon", "Achalpur", "Deoli", "Bhimavaram",
+                "Kumbakonam", "Tinsukia", "Bongaigaon", "Silchar", "Gudivada",
+                "Phagwara", "Narasaraopet", "Suryapet", "Firozpur", "Guntakal",
+                "Gudur", "Medininagar", "Nandurbar", "Karaikudi", "Kishanganj",
+                "Jamalpur", "Ballia", "Kavali", "Tadepalligudem", "Amaravati",
+                "Buxar", "Jehanabad", "Aurangabad", "Gangtok", "Vasco da Gama",
+                "Tezpur", "Kapurthala", "Palwal", "Fazilka", "Khanna",
+                "Bhadrak", "Kaithal", "Chilakaluripet", "Hazaribagh", "Gohana",
+                "Gandhi Nagar", "Baran", "Palani", "Zirakpur", "Jhunjhunu",
+                "Port Blair", "Hoshiarpur", "Miryalaguda", "Tadpatri", "Jagtial",
+                "Karauli", "Kishangarh", "Kodungallur", "Lalitpur", "Bodhan",
+                "Keshod", "Srikakulam", "Kothagudem", "Nagda", "Bhadreswar",
+                "Chikmagalur", "Jangaon", "Mandamarri", "Neyveli", "Siddipet",
+                "Wanaparthy", "Adilabad", "Kadiri", "Kothapet", "Madanapalle",
+                "Sangareddy", "Sirsilla", "Vikarabad", "Warangal", "Yellandu",
+                "Jammikunta", "Kagaznagar", "Kothur", "Mancherial", "Nirmal",
+                "Palwancha", "Ramagundam", "Sathupally", "Suryapet", "Tandur",
+                "Vemulawada", "Vikarabad", "Wanaparthy", "Yellandu", "Zahirabad"
+            ];
+            
+            // Initialize destination autocomplete
+            $("#destination").autocomplete({
+                source: indianCities,
+                minLength: 2
+            });
+            
+            // Tab switching in search results
+            $(".result-tab").click(function() {
+                // If it's a provider tab (nested tabs)
+                if ($(this).parent().parent().hasClass("provider-results")) {
+                    const provider = $(this).data("provider");
+                    const parentTab = $(this).closest(".provider-results").attr("id").split("-")[0];
+                    
+                    // Hide all cards in this section
+                    $(`#${parentTab}-results .${parentTab}-card`).hide();
+                    
+                    // Show selected provider's cards or all
+                    if (provider === "all") {
+                        $(`#${parentTab}-results .${parentTab}-card`).show();
+                    } else {
+                        $(`#${parentTab}-results .${parentTab}-card[data-provider="${provider}"]`).show();
+                    }
+                    
+                    // Update active tab
+                    $(this).siblings().removeClass("active");
+                    $(this).addClass("active");
+                } 
+                // If it's a main tab (hotels, flights, etc.)
+                else {
+                    const tab = $(this).data("tab");
+                    
+                    // Hide all provider results
+                    $(".provider-results").removeClass("active");
+                    
+                    // Show selected tab's results
+                    $(`#${tab}-results`).addClass("active");
+                    
+                    // Update active tab
+                    $(this).siblings().removeClass("active");
+                    $(this).addClass("active");
+                }
+            });
+            
+            // Search form submission
+            $(".search-form").submit(function(e) {
+                e.preventDefault();
                 
-                <div class="footer-col">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#destinations">Destinations</a></li>
-                        <li><a href="#offers">Offers</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
+                // Show loading animation
+                $(".loading").show();
+                $("#searchResults").show();
                 
-                <div class="footer-col">
-                    <h3>Services</h3>
-                    <ul>
-                        <li><a href="#">Hotel Booking</a></li>
-                        <li><a href="#">Flight Booking</a></li>
-                        <
+                // Get search values
+                const destination = $("#destination").val();
+                const checkIn = $("#check-in").val();
+                const checkOut = $("#check-out").val();
+                const guests = $("#guests").val();
+                
+                // Update location in results
+                $("#search-location, #cab-location").text(destination);
+                $("#flight-from, #train-from").text("Delhi"); // Default from location
+                $("#flight-to, #train-to").text(destination);
+                
+                // Simulate API call delay
+                setTimeout(function() {
+                    // Hide loading
+                    $(".loading").hide();
+                    
+                    // Scroll to results
+                    $("html, body").animate({
+                        scrollTop: $("#searchResults").offset().top - 100
+                    }, 500);
+                }, 1500);
+            });
+            
+            // Initialize destination sliders
+            new Swiper(".destinations-slider", {
+                slidesPerView: 1,
+                spaceBetween: 20,
+                pagination: {
+                    el: ".destinations-slider .swiper-pagination",
+                    clickable: true
+                },
+                breakpoints: {
+                    640: {
+                        slidesPerView: 2
+                    },
+                    1024: {
+                        slidesPerView: 3
+                    }
+                }
+            });
+            
+            // Initialize testimonial slider
+            new Swiper(".testimonial-slider", {
+                slidesPerView: 1,
+                spaceBetween: 20,
+                pagination: {
+                    el: ".testimonial-slider .swiper-pagination",
+                    clickable: true
+                },
+                breakpoints: {
+                    768: {
+                        slidesPerView: 2
+                    },
+                    1024: {
+                        slidesPerView: 3
+                    }
+                }
+            });
+            
+            // Header scroll effect
+            $(window).scroll(function() {
+                if ($(this).scrollTop() > 100) {
+                    $("header").addClass("scrolled");
+                } else {
+                    $("header").removeClass("scrolled");
+                }
+            });
+        });
+    </script>
+</body>
+</html>
