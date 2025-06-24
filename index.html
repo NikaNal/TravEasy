@@ -1,561 +1,359 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Your Brand | Modern Business Solutions</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <!-- Enhanced Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Animate.css -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <!-- Custom CSS -->
-    <style>
-        :root {
-            --primary-color: #3a86ff;
-            --secondary-color: #8338ec;
-            --accent-color: #ff006e;
-            --dark-color: #1a1a2e;
-            --light-color: #f8f9fa;
-            --gradient: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-        }
-        
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #ffffff;
-            color: #333;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-        
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            color: var(--dark-color);
-        }
-        
-        /* Header Styles */
-        #header {
-            background: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            width: 100%;
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-        
-        #header.scrolled {
-            background: rgba(255, 255, 255, 0.98);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
-        }
-        
-        /* Hero Section */
-        #hero {
-            background: var(--gradient);
-            color: white;
-            padding: 180px 0 120px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        #hero video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 0;
-            opacity: 0.15;
-        }
-        
-        #hero .content {
-            position: relative;
-            z-index: 1;
-        }
-        
-        #hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-        }
-        
-        /* Feature Cards */
-        .features {
-            padding: 100px 0;
-        }
-        
-        .feature-card {
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            padding: 30px;
-            margin-bottom: 30px;
-            transition: all 0.3s ease;
-            height: 100%;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-        }
-        
-        .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: var(--primary-color);
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        /* Testimonials */
-        #testimonials {
-            background-color: var(--light-color);
-            padding: 100px 0;
-        }
-        
-        .testimonial-card {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            margin: 15px;
-            position: relative;
-        }
-        
-        .testimonial-card:before {
-            content: '"';
-            font-family: 'Playfair Display', serif;
-            font-size: 5rem;
-            color: rgba(0, 0, 0, 0.05);
-            position: absolute;
-            top: 10px;
-            left: 20px;
-            line-height: 1;
-        }
-        
-        .client-img {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--primary-color);
-        }
-        
-        /* CTA Section */
-        #cta {
-            background: var(--gradient);
-            color: white;
-            padding: 80px 0;
-            text-align: center;
-        }
-        
-        .btn-brand {
-            background: white;
-            color: var(--primary-color);
-            border: none;
-            padding: 12px 30px;
-            font-weight: 600;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .btn-brand:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-            color: var(--primary-color);
-        }
-        
-        /* Footer */
-        #footer {
-            background: var(--dark-color);
-            color: white;
-            padding: 60px 0 30px;
-        }
-        
-        .social-icons a {
-            color: white;
-            font-size: 1.2rem;
-            margin-right: 15px;
-            transition: all 0.3s ease;
-        }
-        
-        .social-icons a:hover {
-            color: var(--primary-color);
-            transform: translateY(-3px);
-        }
-        
-        /* Animations */
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
-        
-        .animate-on-scroll.animated {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* Responsive Adjustments */
-        @media (max-width: 768px) {
-            #hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .feature-card {
-                margin-bottom: 20px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TravEasy - Making Every Journey Easy</title>
+  <script src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.development.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.development.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/babel-standalone@7.22.5/babel.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-    <!-- Header -->
-    <header id="header">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <h1 class="logo">Your<span style="color: var(--primary-color);">Brand</span></h1>
-                </div>
-                <div class="col-md-6 text-right">
-                    <nav>
-                        <ul class="list-inline">
-                            <li class="list-inline-item"><a href="#hero">Home</a></li>
-                            <li class="list-inline-item"><a href="#features">Features</a></li>
-                            <li class="list-inline-item"><a href="#about">About</a></li>
-                            <li class="list-inline-item"><a href="#testimonials">Testimonials</a></li>
-                            <li class="list-inline-item"><a href="#contact">Contact</a></li>
-                        </ul>
-                    </nav>
-                </div>
+  <div id="root"></div>
+  <script type="text/babel">
+    function Navbar() {
+      return (
+        <nav className="bg-blue-600 text-white p-4 sticky top-0 z-10">
+          <div className="container mx-auto flex justify-between items-center">
+            <h1 className="text-2xl font-bold">TravEasy</h1>
+            <div className="space-x-4">
+              <a href="#home" className="hover:text-blue-200">Home</a>
+              <a href="#hotels" className="hover:text-blue-200">Hotels</a>
+              <a href="#flights" className="hover:text-blue-200">Flights</a>
+              <a href="#trains" className="hover:text-blue-200">Trains</a>
+              <a href="#buses" className="hover:text-blue-200">Buses</a>
+              <a href="#cabs" className="hover:text-blue-200">Cabs</a>
+              <a href="#packages" className="hover:text-blue-200">Packages</a>
+              <a href="#offers" className="hover:text-blue-200">Offers</a>
+              <a href="#support" className="hover:text-blue-200">Support</a>
+              <a href="#login" className="hover:text-blue-200">Login</a>
             </div>
-        </div>
-    </header>
+          </div>
+        </nav>
+      );
+    }
 
-    <!-- Hero Section with Video Background -->
-    <section id="hero" class="text-center">
-        <video autoplay muted loop>
-            <source src="https://assets.mixkit.co/videos/preview/mixkit-woman-holding-a-light-bulb-while-seated-12303-large.mp4" type="video/mp4">
-        </video>
-        <div class="container">
-            <div class="content animate__animated animate__fadeIn">
-                <h1 class="mb-4">Transform Your Business With Our Solutions</h1>
-                <p class="lead mb-5">We help innovative companies scale their business with our cutting-edge technology and strategic expertise.</p>
-                <a href="#contact" class="btn btn-brand btn-lg">Get Started Today</a>
+    function Hero() {
+      return (
+        <section id="home" className="relative h-screen bg-cover bg-center" style={{backgroundImage: "url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80')"}}>
+          <div className="absolute inset-0 bg-black opacity-50"></div>
+          <div className="container mx-auto h-full flex flex-col justify-center items-center text-white text-center relative z-10">
+            <h1 className="text-5xl font-bold mb-4">Welcome to TravEasy</h1>
+            <p className="text-xl mb-6">Making Every Journey Easy</p>
+            <div className="w-full max-w-2xl bg-white p-4 rounded-lg shadow-lg text-black">
+              <div className="flex space-x-4">
+                <select className="p-2 border rounded">
+                  <option>Hotels</option>
+                  <option>Flights</option>
+                  <option>Trains</option>
+                  <option>Buses</option>
+                  <option>Cabs</option>
+                </select>
+                <input type="text" placeholder="Where to?" className="flex-grow p-2 border rounded"/>
+                <button className="bg-blue-600 text-white p-2 rounded hover:bg-blue-700">Search</button>
+              </div>
             </div>
-        </div>
-    </section>
+          </div>
+        </section>
+      );
+    }
 
-    <!-- Features Section -->
-    <section id="features" class="features">
-        <div class="container">
-            <div class="section-title text-center mb-5">
-                <h2>Our Core Services</h2>
-                <p class="lead">Everything you need to grow your business</p>
+    function Hotels() {
+      return (
+        <section id="hotels" className="py-16 bg-gray-100">
+          <div className="container mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-8">Hotel Booking</h2>
+            <p className="text-center mb-8">Discover and book the best hotels across India and beyond.</p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="bg-white p-4 rounded-lg shadow">
+                <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Hotel" className="w-full h-48 object-cover rounded"/>
+                <h3 className="text-xl font-semibold mt-4">Luxury Resorts</h3>
+                <p>Book premium stays with top amenities.</p>
+              </div>
+              <div className="bg-white p-4 rounded-lg shadow">
+                <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Budget Hotel" className="w-full h-48 object-cover rounded"/>
+                <h3 className="text-xl font-semibold mt-4">Budget Stays</h3>
+                <p>Affordable hotels near temples and more.</p>
+              </div>
+              <div className="bg-white p-4 rounded-lg shadow">
+                <img src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Family Hotel" className="w-full h-48 object-cover rounded"/>
+                <h3 className="text-xl font-semibold mt-4">Family-Friendly</h3>
+                <p>Comfortable stays for the whole family.</p>
+              </div>
             </div>
-            <div class="row">
-                <div class="col-md-4 animate-on-scroll">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                        <h3>Business Growth</h3>
-                        <p>We provide strategic planning and execution to help your business expand into new markets and increase revenue.</p>
-                        <a href="#" class="btn btn-outline-primary">Learn More</a>
-                    </div>
-                </div>
-                <div class="col-md-4 animate-on-scroll">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-laptop-code"></i>
-                        </div>
-                        <h3>Technology Solutions</h3>
-                        <p>Custom software development and IT solutions tailored to your specific business needs and challenges.</p>
-                        <a href="#" class="btn btn-outline-primary">Learn More</a>
-                    </div>
-                </div>
-                <div class="col-md-4 animate-on-scroll">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-bullseye"></i>
-                        </div>
-                        <h3>Marketing Strategy</h3>
-                        <p>Data-driven marketing campaigns that deliver measurable results and increase your brand awareness.</p>
-                        <a href="#" class="btn btn-outline-primary">Learn More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+          </div>
+        </section>
+      );
+    }
 
-    <!-- About Section with Stats -->
-    <section id="about" class="py-5 bg-light">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 mb-5 mb-lg-0 animate-on-scroll">
-                    <h2 class="mb-4">Why Choose Our Company</h2>
-                    <p class="lead">We combine industry expertise with innovative technology to deliver exceptional results.</p>
-                    <p>Founded in 2010, we've helped over 500 clients achieve their business goals through our comprehensive suite of services. Our team of experts brings decades of combined experience across multiple industries.</p>
-                    <div class="row mt-4">
-                        <div class="col-6">
-                            <div class="counter">
-                                <h3 class="count" data-count="500">0</h3>
-                                <p>Happy Clients</p>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="counter">
-                                <h3 class="count" data-count="150">0</h3>
-                                <p>Projects Completed</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 animate-on-scroll">
-                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Team meeting" class="img-fluid rounded shadow">
-                </div>
+    function Flights() {
+      return (
+        <section id="flights" className="py-16">
+          <div className="container mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-8">Flight Booking</h2>
+            <p className="text-center mb-8">Fly hassle-free with TravEasy. Compare prices and book now.</p>
+            <div className="bg-white p-6 rounded-lg shadow flex items-center">
+              <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Flight" className="w-1/2 h-64 object-cover rounded mr-4"/>
+              <div>
+                <h3 className="text-xl font-semibold">Book Domestic & International Flights</h3>
+                <p>Real-time pricing, easy cancellations, and add-ons like meals and baggage.</p>
+                <button className="mt-4 bg-blue-600 text-white p-2 rounded hover:bg-blue-700">Search Flights</button>
+              </div>
             </div>
-        </div>
-    </section>
+          </div>
+        </section>
+      );
+    }
 
-    <!-- Testimonials Section -->
-    <section id="testimonials">
-        <div class="container">
-            <div class="section-title text-center mb-5">
-                <h2>What Our Clients Say</h2>
-                <p class="lead">Don't just take our word for it</p>
+    function Trains() {
+      return (
+        <section id="trains" className="py-16 bg-gray-100">
+          <div className="container mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-8">Train Booking</h2>
+            <p className="text-center mb-8">Book train tickets swiftly with our IRCTC-integrated platform.</p>
+            <div className="bg-white p-6 rounded-lg shadow flex items-center">
+              <div>
+                <h3 className="text-xl font-semibold">IRCTC-Integrated Booking</h3>
+                <p>Check PNR status, book Tatkal, and get seat preferences.</p>
+                <button className="mt-4 bg-blue-600 text-white p-2 rounded hover:bg-blue-700">Book Trains</button>
+              </div>
+              <img src="https://images.unsplash.com/photo-1515161315471-d9c7f918a755?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Train" className="w-1/2 h-64 object-cover rounded ml-4"/>
             </div>
-            <div class="row">
-                <div class="col-md-4 animate-on-scroll">
-                    <div class="testimonial-card">
-                        <p>"Working with YourBrand has transformed our business. Their strategic insights helped us increase revenue by 150% in just 6 months."</p>
-                        <div class="client-info mt-4 d-flex align-items-center">
-                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client" class="client-img mr-3">
-                            <div>
-                                <h5 class="mb-0">Sarah Johnson</h5>
-                                <small>CEO, TechSolutions Inc.</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 animate-on-scroll">
-                    <div class="testimonial-card">
-                        <p>"The technology solutions provided were exactly what we needed to streamline our operations. Highly recommend their services!"</p>
-                        <div class="client-info mt-4 d-flex align-items-center">
-                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client" class="client-img mr-3">
-                            <div>
-                                <h5 class="mb-0">Michael Chen</h5>
-                                <small>CTO, Global Enterprises</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 animate-on-scroll">
-                    <div class="testimonial-card">
-                        <p>"Exceptional service from start to finish. Their team went above and beyond to ensure our project was a success."</p>
-                        <div class="client-info mt-4 d-flex align-items-center">
-                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Client" class="client-img mr-3">
-                            <div>
-                                <h5 class="mb-0">Emily Rodriguez</h5>
-                                <small>Marketing Director, BrightStar</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+          </div>
+        </section>
+      );
+    }
 
-    <!-- CTA Section -->
-    <section id="cta" class="animate-on-scroll">
-        <div class="container">
-            <h2 class="mb-4">Ready to Transform Your Business?</h2>
-            <p class="lead mb-5">Get in touch with our team today to discuss how we can help you achieve your goals.</p>
-            <a href="#contact" class="btn btn-brand btn-lg">Schedule a Consultation</a>
-        </div>
-    </section>
+    function Buses() {
+      return (
+        <section id="buses" className="py-16">
+          <div className="container mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-8">Bus Booking</h2>
+            <p className="text-center mb-8">Choose from AC, sleeper, and luxury buses across India.</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="bg-white p-4 rounded-lg shadow">
+                <img src="https://images.unsplash.com/photo-1570125909232-eb263f7b4010?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Bus" className="w-full h-48 object-cover rounded"/>
+                <h3 className="text-xl font-semibold mt-4">Luxury Buses</h3>
+                <p>Comfortable rides with live tracking and verified operators.</p>
+              </div>
+              <div className="bg-white p-4 rounded-lg shadow">
+                <img src="https://images.unsplash.com/photo-1524803896992-ffb7a63903b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Sleeper Bus" className="w-full h-48 object-cover rounded"/>
+                <h3 className="text-xl font-semibold mt-4">Sleeper Buses</h3>
+                <p>Perfect for overnight journeys with seat selection.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      );
+    }
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-5">
-        <div class="container">
-            <div class="section-title text-center mb-5">
-                <h2>Get In Touch</h2>
-                <p class="lead">We'd love to hear from you</p>
+    function Cabs() {
+      return (
+        <section id="cabs" className="py-16 bg-gray-100">
+          <div className="container mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-8">Cab Booking</h2>
+            <p className="text-center mb-8">Book reliable cabs for city rides, airport transfers, or outstation trips.</p>
+            <div className="bg-white p-6 rounded-lg shadow flex items-center">
+              <img src="https://images.unsplash.com/photo-1516321165247-7b3915d5a5f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Cab" className="w-1/2 h-64 object-cover rounded mr-4"/>
+              <div>
+                <h3 className="text-xl font-semibold">Safe & Verified Cabs</h3>
+                <p>Choose from SUVs, sedans, or female-friendly rides for religious tours.</p>
+                <button className="mt-4 bg-blue-600 text-white p-2 rounded hover:bg-blue-700">Book Cabs</button>
+              </div>
             </div>
-            <div class="row">
-                <div class="col-lg-6 mb-5 mb-lg-0 animate-on-scroll">
-                    <form id="contactForm" action="https://formspree.io/f/yourformid" method="POST">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Your Name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Your Email" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Subject">
-                        </div>
-                        <div class="form-group">
-                            <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Send Message</button>
-                    </form>
-                </div>
-                <div class="col-lg-6 animate-on-scroll">
-                    <div class="contact-info">
-                        <div class="contact-item d-flex mb-4">
-                            <div class="icon mr-4">
-                                <i class="fas fa-map-marker-alt fa-2x text-primary"></i>
-                            </div>
-                            <div>
-                                <h5>Location</h5>
-                                <p>123 Business Ave, Suite 500<br>San Francisco, CA 94107</p>
-                            </div>
-                        </div>
-                        <div class="contact-item d-flex mb-4">
-                            <div class="icon mr-4">
-                                <i class="fas fa-phone-alt fa-2x text-primary"></i>
-                            </div>
-                            <div>
-                                <h5>Phone</h5>
-                                <p>(123) 456-7890</p>
-                            </div>
-                        </div>
-                        <div class="contact-item d-flex mb-4">
-                            <div class="icon mr-4">
-                                <i class="fas fa-envelope fa-2x text-primary"></i>
-                            </div>
-                            <div>
-                                <h5>Email</h5>
-                                <p>info@yourbrand.com</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="social-icons mt-5">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+          </div>
+        </section>
+      );
+    }
 
-    <!-- Footer -->
-    <footer id="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 mb-4 mb-md-0">
-                    <h4>About YourBrand</h4>
-                    <p>We are a leading business solutions provider helping companies of all sizes achieve their growth objectives through innovative strategies and technology.</p>
-                </div>
-                <div class="col-md-2 mb-4 mb-md-0">
-                    <h4>Quick Links</h4>
-                    <ul class="list-unstyled">
-                        <li><a href="#hero">Home</a></li>
-                        <li><a href="#features">Services</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-3 mb-4 mb-md-0">
-                    <h4>Services</h4>
-                    <ul class="list-unstyled">
-                        <li><a href="#">Business Consulting</a></li>
-                        <li><a href="#">Digital Marketing</a></li>
-                        <li><a href="#">Web Development</a></li>
-                        <li><a href="#">Data Analytics</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-3">
-                    <h4>Subscribe</h4>
-                    <p>Stay updated with our latest news and offers.</p>
-                    <form class="subscribe-form">
-                        <div class="input-group">
-                            <input type="email" class="form-control" placeholder="Your Email">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="submit"><i class="fas fa-paper-plane"></i></button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+    function Packages() {
+      return (
+        <section id="packages" className="py-16">
+          <div className="container mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-8">Holiday Packages</h2>
+            <p className="text-center mb-8">Explore curated packages for families, couples, and religious groups.</p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="bg-white p-4 rounded-lg shadow">
+                <img src="https://images.unsplash.com/photo-1509233725247-49e657c5a5a4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Family Vacation" className="w-full h-48 object-cover rounded"/>
+                <h3 className="text-xl font-semibold mt-4">Family Vacations</h3>
+                <p>Fun-filled trips with accommodation and sightseeing.</p>
+              </div>
+              <div className="bg-white p-4 rounded-lg shadow">
+                <img src="https://images.unsplash.com/photo-1517663905627-4b5db2f315b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Couple Retreat" className="w-full h-48 object-cover rounded"/>
+                <h3 className="text-xl font-semibold mt-4">Couple Retreats</h3>
+                <p>Romantic getaways tailored for couples.</p>
+              </div>
+              <div className="bg-white p-4 rounded-lg shadow">
+                <img src="https://images.unsplash.com/photo-1541336146-6c4233e1c905?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Religious Pilgrimage" className="w-full h-48 object-cover rounded"/>
+                <h3 className="text-xl font-semibold mt-4">Religious Pilgrimages</h3>
+                <p>Spiritual tours to Vaishno Devi, Varanasi, and more.</p>
+              </div>
             </div>
-            <hr class="mt-5 mb-4" style="border-color: rgba(255,255,255,0.1);">
-            <div class="row">
-                <div class="col-md-6 text-center text-md-left">
-                    <p class="mb-0">&copy; 2023 YourBrand. All rights reserved.</p>
-                </div>
-                <div class="col-md-6 text-center text-md-right">
-                    <ul class="list-inline mb-0">
-                        <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
-                        <li class="list-inline-item"><a href="#">Terms of Service</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </footer>
+          </div>
+        </section>
+      );
+    }
 
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
-    <script>
-        // Header scroll effect
-        $(window).scroll(function() {
-            if ($(this).scrollTop() > 100) {
-                $('#header').addClass('scrolled');
-            } else {
-                $('#header').removeClass('scrolled');
-            }
-        });
-        
-        // Animation on scroll
-        $(document).ready(function() {
-            $('.animate-on-scroll').each(function() {
-                var element = $(this);
-                var animationTrigger = element.offset().top - $(window).height() + 100;
-                
-                $(window).scroll(function() {
-                    var scrollPosition = $(window).scrollTop();
-                    if (scrollPosition > animationTrigger) {
-                        element.addClass('animated');
-                    }
-                });
-                
-                // Trigger once on page load if already in view
-                if ($(window).scrollTop() > animationTrigger) {
-                    element.addClass('animated');
-                }
-            });
-            
-            // Counter animation
-            $('.count').each(function() {
-                $(this).prop('Counter', 0).animate({
-                    Counter: $(this).data('count')
-                }, {
-                    duration: 2000,
-                    easing: 'swing',
-                    step: function(now) {
-                        $(this).text(Math.ceil(now));
-                    }
-                });
-            });
-            
-            // Smooth scrolling for anchor links
-            $('a[href*="#"]').on('click', function(e) {
-                e.preventDefault();
-                
-                $('html, body').animate(
-                    {
-                        scrollTop: $($(this).attr('href')).offset().top - 80,
-                    },
-                    500,
-                    'linear'
-                );
-            });
-        });
-    </script>
+    function Offers() {
+      return (
+        <section id="offers" className="py-16 bg-gray-100">
+          <div className="container mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-8">Offers & Deals</h2>
+            <p className="text-center mb-8">Exclusive discounts on hotels, flights, and tours.</p>
+            <div className="bg-white p-6 rounded-lg shadow">
+              <img src="https://images.unsplash.com/photo-1557821558-c2cdbe4a9274?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Offers" className="w-full h-64 object-cover rounded mb-4"/>
+              <h3 className="text-xl font-semibold">Seasonal Discounts</h3>
+              <p>Save more with promo codes and group booking deals.</p>
+              <begin{array: center
+              <button className="mt-4 bg-blue-600 text-white p-2 rounded hover:bg-blue-700">Grab Offers</button>
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    function Support() {
+      return (
+        <section id="support" className="py-16">
+          <div className="container mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-8">Customer Support</h2>
+            <p className="text-center mb-8">Our 24/7 support team is here to guide you.</p>
+            <div className="bg-white p-6 rounded-lg shadow flex items-center">
+              <div>
+                <h3 className="text-xl font-semibold">Reach Us Anytime</h3>
+                <p>Live chat, WhatsApp, or call our toll-free number for assistance.</p>
+                <button className="mt-4 bg-blue-600 text-white p-2 rounded hover:bg-blue-700">Contact Support</button>
+              </div>
+              <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Support" className="w-1/2 h-64 object-cover rounded ml-4"/>
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    function Login() {
+      return (
+        <section id="login" className="py-16 bg-gray-100">
+          <div className="container mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-8">User Dashboard</h2>
+            <p className="text-center mb-8">Track bookings, manage itineraries, and access exclusive benefits.</p>
+            <div className="bg-white p-6 rounded-lg shadow max-w-md mx-auto">
+              <h3 className="text-xl font-semibold mb-4">Login / Sign Up</h3>
+              <input type="text" placeholder="Email" className="w-full p-2 mb-4 border rounded"/>
+              <input type="password" placeholder="Password" className="w-full p-2 mb-4 border rounded"/>
+              <button className="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700">Login</button>
+              <p className="text-center mt-4">New user? <a href="#" className="text-blue-600">Sign Up</a></p>
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    function About() {
+      return (
+        <section id="about" className="py-16">
+          <div className="container mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-8">About Us</h2>
+            <p className="text-center mb-8">TravEasy was built to make travel simple and affordable for Indian families.</p>
+            <div className="bg-white p-6 rounded-lg shadow flex items-center">
+              <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="About" className="w-1/2 h-64 object-cover rounded mr-4"/>
+              <div>
+                <h3 className="text-xl font-semibold">Your Trusted Travel Partner</h3>
+                <p>We're here to make every journey memorable and hassle-free.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    function Blog() {
+      return (
+        <section id="blog" className="py-16 bg-gray-100">
+          <div className="container mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-8">Blog & Travel Guide</h2>
+            <p className="text-center mb-8">Get inspired with travel tips and destination guides.</p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="bg-white p-4 rounded-lg shadow">
+                <img src="https://images.unsplash.com/photo-1501785883179-f4172e66e1a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Blog" className="w-full h-48 object-cover rounded"/>
+                <h3 className="text-xl font-semibold mt-4">Travel Tips</h3>
+                <p>Budget hacks and planning guides for Indian travelers.</p>
+              </div>
+              <div className="bg-white p-4 rounded-lg shadow">
+                <img src="https://images.unsplash.com/photo-1541336146-6c4233e1c905?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Religious Guide" className="w-full h-48 object-cover rounded"/>
+                <h3 className="text-xl font-semibold mt-4">Religious Routes</h3>
+                <p>Guides for spiritual journeys across India.</p>
+              </div>
+              <div className="bg-white p-4 rounded-lg shadow">
+                <img src="https://images.unsplash.com/photo-1509233725247-49e657c5a5a4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Destination Guide" className="w-full h-48 object-cover rounded"/>
+                <h3 className="text-xl font-semibold mt-4">Destination Guides</h3>
+                <p>Explore top travel spots with insider tips.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    function AppPromo() {
+      return (
+        <section id="app-promo" className="py-16">
+          <div className="container mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-8">Download TravEasy App</h2>
+            <p className="text-center mb-8">Plan, book, and travel on-the-go with our Android & iOS app.</p>
+            <div className="bg-white p-6 rounded-lg shadow flex items-center">
+              <div>
+                <h3 className="text-xl font-semibold">TravEasy Mobile App</h3>
+                <p>Available on Android & iOS for seamless travel planning.</p>
+                <button className="mt-4 bg-blue-600 text-white p-2 rounded hover:bg-blue-700">Download Now</button>
+              </div>
+              <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="App Promo" className="w-1/2 h-64 object-cover rounded ml-4"/>
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    function Footer() {
+      return (
+        <footer className="bg-blue-600 text-white p-4">
+          <div className="container mx-auto text-center">
+            <p>&copy; 2025 TravEasy. All rights reserved.</p>
+            <div className="mt-2">
+              <a href="#about" className="mx-2 hover:text-blue-200">About</a>
+              <a href="#support" className="mx-2 hover:text-blue-200">Contact</a>
+              <a href="#blog" className="mx-2 hover:text-blue-200">Blog</a>
+            </div>
+          </div>
+        </footer>
+      );
+    }
+
+    function App() {
+      return (
+        <div>
+          <Navbar />
+          <Hero />
+          <Hotels />
+          <Flights />
+          <Trains />
+          <Buses />
+          <Cabs />
+          <Packages />
+          <Offers />
+          <Support />
+          <Login />
+          <About />
+          <Blog />
+          <AppPromo />
+          <Footer />
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
 </body>
 </html>
