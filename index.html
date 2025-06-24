@@ -11,8 +11,219 @@
     <!-- jQuery UI for autocomplete -->
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <style>
-        /* Previous CSS remains the same, adding new styles below */
+        :root {
+            --primary: #2a52be;
+            --secondary: #ff7e33;
+            --accent: #ffd700;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+            --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        }
         
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--dark);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: rgba(255, 255, 255, 0.97);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        header.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        .auth-buttons .btn {
+            margin-left: 15px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: url('https://images.unsplash.com/photo-1506929562872-bb421503ef21?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            color: white;
+            text-align: center;
+            padding-top: 80px; /* Added to account for fixed header */
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: white;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        /* Search Box */
+        .search-box {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .search-tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .search-tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: 500;
+            color: #666;
+            position: relative;
+        }
+        
+        .search-tab.active {
+            color: var(--primary);
+        }
+        
+        .search-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--primary);
+        }
+        
+        .search-form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .form-group {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .search-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            align-self: flex-end;
+        }
+        
+        .search-btn:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+        }
+        
+        /* Search Results Section */
         .search-results {
             display: none;
             margin-top: 40px;
@@ -235,12 +446,209 @@
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
+        
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background: var(--light);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .service-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .service-card:hover .service-img img {
+            transform: scale(1.1);
+        }
+        
+        .service-content {
+            padding: 20px;
+        }
+        
+        .service-content h3 {
+            margin-bottom: 10px;
+        }
+        
+        .service-content p {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .service-link {
+            display: inline-block;
+            color: var(--primary);
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .service-link:hover {
+            color: var(--secondary);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                padding: 15px;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0 10px 10px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .search-form {
+                flex-direction: column;
+            }
+            
+            .form-group {
+                width: 100%;
+            }
+            
+            .hotel-card, .cab-card {
+                flex-direction: column;
+            }
+            
+            .hotel-img, .cab-img {
+                width: 100%;
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+            
+            .price-container {
+                text-align: left;
+                margin-left: 0;
+                margin-top: 15px;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- Header and Hero sections remain the same as before -->
-    
-    <!-- Search Results Section (New) -->
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="#" class="logo">Trav<span>Easy</span></a>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#destinations">Destinations</a></li>
+                    <li><a href="#offers">Offers</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <a href="#" class="btn">Login</a>
+                <a href="#" class="btn">Sign Up</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Making Every Journey Easy</h1>
+            <p>Your all-in-one travel partner for hotels, flights, trains, buses, and cabs. Book your perfect trip in just a few clicks!</p>
+            
+            <!-- Search Box -->
+            <div class="search-box">
+                <div class="search-tabs">
+                    <div class="search-tab active">Hotels</div>
+                    <div class="search-tab">Flights</div>
+                    <div class="search-tab">Trains</div>
+                    <div class="search-tab">Buses</div>
+                    <div class="search-tab">Cabs</div>
+                </div>
+                
+                <form class="search-form">
+                    <div class="form-group">
+                        <label for="destination">Destination</label>
+                        <input type="text" id="destination" placeholder="Where are you going?">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="check-in">Check-in</label>
+                        <input type="date" id="check-in">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="check-out">Check-out</label>
+                        <input type="date" id="check-out">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="guests">Guests</label>
+                        <select id="guests">
+                            <option value="1">1 Guest</option>
+                            <option value="2">2 Guests</option>
+                            <option value="3">3 Guests</option>
+                            <option value="4">4 Guests</option>
+                            <option value="family">Family</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="search-btn">Search</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Results Section -->
     <section class="search-results" id="searchResults">
         <div class="container">
             <div class="result-tabs">
@@ -329,8 +737,6 @@
                             <button class="book-btn">Book Now</button>
                         </div>
                     </div>
-                    
-                    <!-- More hotel cards would be loaded here dynamically -->
                 </div>
             </div>
             
@@ -367,29 +773,6 @@
                             <button class="book-btn">Book Now</button>
                         </div>
                     </div>
-                    
-                    <!-- Sample Flight Card 2 -->
-                    <div class="flight-card" data-provider="goibibo">
-                        <div class="flight-info">
-                            <div class="flight-airline">
-                                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/5/57/Vistara_logo.svg/1200px-Vistara_logo.svg.png" alt="Vistara" class="airline-logo">
-                                <span>Vistara</span>
-                            </div>
-                            <div class="flight-number">UK-925</div>
-                        </div>
-                        <div class="flight-time">
-                            <div>DEL 09:15</div>
-                            <div class="flight-duration">2h 5m</div>
-                            <div>BOM 11:20</div>
-                        </div>
-                        <div class="price-container">
-                            <div class="price">₹4,200</div>
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Goibibo_logo.png" alt="Goibibo" class="provider-logo">
-                            <button class="book-btn">Book Now</button>
-                        </div>
-                    </div>
-                    
-                    <!-- More flight cards would be loaded here dynamically -->
                 </div>
             </div>
             
@@ -419,23 +802,6 @@
                             <button class="book-btn">Book Now</button>
                         </div>
                     </div>
-                    
-                    <!-- Sample Train Card 2 -->
-                    <div class="train-card" data-provider="makemytrip">
-                        <div class="train-info">
-                            <h4 class="train-route">Duronto Express</h4>
-                            <p class="train-number">12213</p>
-                            <p class="train-details">NZM (23:00) → CSTM (15:20) | Duration: 16h 20m</p>
-                        </div>
-                        <div class="price-container">
-                            <div class="price">₹1,750</div>
-                            <div>3A</div>
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/71/MakeMyTrip_Logo.png" alt="MakeMyTrip" class="provider-logo" style="height: 25px;">
-                            <button class="book-btn">Book Now</button>
-                        </div>
-                    </div>
-                    
-                    <!-- More train cards would be loaded here dynamically -->
                 </div>
             </div>
             
@@ -472,118 +838,70 @@
                             <button class="book-btn">Book Now</button>
                         </div>
                     </div>
-                    
-                    <!-- Sample Cab Card 2 -->
-                    <div class="cab-card" data-provider="uber">
-                        <div class="cab-img">
-                            <img src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="SUV Cab">
-                        </div>
-                        <div class="cab-info">
-                            <h4 class="cab-type">Uber SUV</h4>
-                            <p class="cab-details">Toyota Innova or similar | 7 seats | AC</p>
-                            <div class="cab-features">
-                                <span class="feature">AC</span>
-                                <span class="feature">7 Seats</span>
-                                <span class="feature">Free Cancellation</span>
-                            </div>
-                        </div>
-                        <div class="price-container">
-                            <div class="price">₹2,199</div>
-                            <div>8 hrs / 80 km</div>
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Uber_logo_2018.svg/1200px-Uber_logo_2018.svg.png" alt="Uber" class="provider-logo">
-                            <button class="book-btn">Book Now</button>
-                        </div>
-                    </div>
-                    
-                    <!-- More cab cards would be loaded here dynamically -->
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Rest of your existing sections (Services, Destinations, etc.) -->
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p>Everything you need for a perfect journey, all in one place</p>
+            </div>
+            
+            <div class="services-grid">
+                <!-- Hotel Booking -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Hotel Booking">
+                    </div>
+                    <div class="service-content">
+                        <h3>Hotel Booking</h3>
+                        <p>Discover and book the best hotels across India and beyond. From luxury resorts to budget stays.</p>
+                        <a href="#" class="service-link">Book Now →</a>
+                    </div>
+                </div>
+                
+                <!-- Flight Booking -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Flight Booking">
+                    </div>
+                    <div class="service-content">
+                        <h3>Flight Booking</h3>
+                        <p>Compare prices and book domestic or international flights at unbeatable rates.</p>
+                        <a href="#" class="service-link">Book Now →</a>
+                    </div>
+                </div>
+                
+                <!-- Train Booking -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1516054575922-f0b8eeadec1a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Train Booking">
+                    </div>
+                    <div class="service-content">
+                        <h3>Train Booking</h3>
+                        <p>Book your train tickets swiftly through our IRCTC-integrated platform.</p>
+                        <a href="#" class="service-link">Book Now →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     
     <script>
         $(document).ready(function() {
             // Indian cities for autocomplete
             const indianCities = [
                 "Mumbai", "Delhi", "Bangalore", "Hyderabad", "Ahmedabad", 
-                "Chennai", "Kolkata", "Surat", "Pune", "Jaipur", 
-                "Lucknow", "Kanpur", "Nagpur", "Indore", "Thane", 
-                "Bhopal", "Visakhapatnam", "Pimpri-Chinchwad", "Patna", "Vadodara",
-                "Ghaziabad", "Ludhiana", "Agra", "Nashik", "Faridabad",
-                "Meerut", "Rajkot", "Varanasi", "Srinagar", "Aurangabad",
-                "Dhanbad", "Amritsar", "Navi Mumbai", "Allahabad", "Howrah",
-                "Ranchi", "Gwalior", "Jabalpur", "Coimbatore", "Vijayawada",
-                "Jodhpur", "Madurai", "Raipur", "Kota", "Chandigarh",
-                "Guwahati", "Solapur", "Hubli-Dharwad", "Bareilly", "Moradabad",
-                "Mysore", "Gurgaon", "Aligarh", "Jalandhar", "Tiruchirappalli",
-                "Bhubaneswar", "Salem", "Warangal", "Guntur", "Bhiwandi",
-                "Saharanpur", "Gorakhpur", "Bikaner", "Amravati", "Noida",
-                "Jamshedpur", "Bhilai", "Cuttack", "Firozabad", "Kochi",
-                "Nellore", "Bhavnagar", "Dehradun", "Durgapur", "Asansol",
-                "Rourkela", "Nanded", "Kolhapur", "Ajmer", "Akola",
-                "Gulbarga", "Loni", "Ujjain", "Siliguri", "Jhansi",
-                "Ulhasnagar", "Jammu", "Sangli-Miraj & Kupwad", "Mangalore", "Erode",
-                "Belgaum", "Ambattur", "Tirunelveli", "Malegaon", "Gaya",
-                "Jalgaon", "Udaipur", "Maheshtala", "Tirupur", "Davanagere",
-                "Kozhikode", "Kurnool", "Rajpur Sonarpur", "Rajahmundry", "Bokaro",
-                "South Dumdum", "Bellary", "Patiala", "Gopalpur", "Agartala",
-                "Bhagalpur", "Muzaffarnagar", "Bhatpara", "Panihati", "Latur",
-                "Dhule", "Rohtak", "Korba", "Bhilwara", "Brahmapur",
-                "Muzaffarpur", "Ahmednagar", "Mathura", "Kollam", "Avadi",
-                "Kadapa", "Sambalpur", "Bilaspur", "Shahjahanpur", "Satara",
-                "Bijapur", "Rampur", "Shivamogga", "Chandrapur", "Junagadh",
-                "Thrissur", "Alwar", "Bardhaman", "Kulti", "Kakinada",
-                "Nizamabad", "Parbhani", "Tumkur", "Hisar", "Ozhukarai",
-                "Bihar Sharif", "Panipat", "Darbhanga", "Bally", "Aizawl",
-                "Dewas", "Ichalkaranji", "Karnal", "Bathinda", "Jalna",
-                "Eluru", "Barasat", "Kirari Suleman Nagar", "Purnia", "Satna",
-                "Mau", "Sonipat", "Farrukhabad", "Sagar", "Rourkela",
-                "Durg", "Imphal", "Ratlam", "Hapur", "Arrah",
-                "Karimnagar", "Anantapur", "Etawah", "Ambernath", "North Dumdum",
-                "Bharatpur", "Begusarai", "New Delhi", "Gandhidham", "Baranagar",
-                "Tiruvottiyur", "Puducherry", "Sikar", "Thoothukudi", "Rewa",
-                "Mirzapur", "Raichur", "Pali", "Ramagundam", "Haridwar",
-                "Vijayanagaram", "Katihar", "Nagercoil", "Sri Ganganagar", "Karawal Nagar",
-                "Mango", "Thanjavur", "Bulandshahr", "Uluberia", "Murwara",
-                "Sambhal", "Singrauli", "Nadiad", "Secunderabad", "Naihati",
-                "Yamunanagar", "Bidhan Nagar", "Pallavaram", "Bidar", "Munger",
-                "Panchkula", "Burhanpur", "Raurkela Industrial Township", "Kharagpur", "Dindigul",
-                "Gandhinagar", "Hospet", "Nangloi Jat", "Malda", "Ongole",
-                "Deoghar", "Chapra", "Haldia", "Khandwa", "Nandyal",
-                "Morena", "Amroha", "Anand", "Bhind", "Bhalswa Jahangir Pur",
-                "Madhyamgram", "Bhiwani", "Berhampur", "Ambala", "Morbi",
-                "Fatehpur", "Raebareli", "Khora", "Chittoor", "Bhusawal",
-                "Orai", "Bahraich", "Phusro", "Vellore", "Mehsana",
-                "Raiganj", "Sirsa", "Danapur", "Serampore", "Sultan Pur Majra",
-                "Guna", "Jaunpur", "Panvel", "Shivpuri", "Surendranagar Dudhrej",
-                "Unnao", "Hugli-Chinsurah", "Alappuzha", "Kottayam", "Machilipatnam",
-                "Shimla", "Adoni", "Udupi", "Tenali", "Proddatur",
-                "Saharsa", "Hindupur", "Sasaram", "Dibrugarh", "Jorhat",
-                "Hajipur", "Nagaon", "Achalpur", "Deoli", "Bhimavaram",
-                "Kumbakonam", "Tinsukia", "Bongaigaon", "Silchar", "Gudivada",
-                "Phagwara", "Narasaraopet", "Suryapet", "Firozpur", "Guntakal",
-                "Gudur", "Medininagar", "Nandurbar", "Karaikudi", "Kishanganj",
-                "Jamalpur", "Ballia", "Kavali", "Tadepalligudem", "Amaravati",
-                "Buxar", "Jehanabad", "Aurangabad", "Gangtok", "Vasco da Gama",
-                "Tezpur", "Kapurthala", "Palwal", "Fazilka", "Khanna",
-                "Bhadrak", "Kaithal", "Chilakaluripet", "Hazaribagh", "Gohana",
-                "Gandhi Nagar", "Baran", "Palani", "Zirakpur", "Jhunjhunu",
-                "Port Blair", "Hoshiarpur", "Miryalaguda", "Tadpatri", "Jagtial",
-                "Karauli", "Kishangarh", "Kodungallur", "Lalitpur", "Bodhan",
-                "Keshod", "Srikakulam", "Kothagudem", "Nagda", "Bhadreswar",
-                "Chikmagalur", "Jangaon", "Mandamarri", "Neyveli", "Siddipet",
-                "Wanaparthy", "Adilabad", "Kadiri", "Kothapet", "Madanapalle",
-                "Sangareddy", "Sirsilla", "Vikarabad", "Warangal", "Yellandu",
-                "Jammikunta", "Kagaznagar", "Kothur", "Mancherial", "Nirmal",
-                "Palwancha", "Ramagundam", "Sathupally", "Suryapet", "Tandur",
-                "Vemulawada", "Vikarabad", "Wanaparthy", "Yellandu", "Zahirabad"
+                "Chennai", "Kolkata", "Surat", "Pune", "Jaipur"
+                // Rest of cities would be here in production
             ];
             
             // Initialize destination autocomplete
@@ -658,42 +976,6 @@
                         scrollTop: $("#searchResults").offset().top - 100
                     }, 500);
                 }, 1500);
-            });
-            
-            // Initialize destination sliders
-            new Swiper(".destinations-slider", {
-                slidesPerView: 1,
-                spaceBetween: 20,
-                pagination: {
-                    el: ".destinations-slider .swiper-pagination",
-                    clickable: true
-                },
-                breakpoints: {
-                    640: {
-                        slidesPerView: 2
-                    },
-                    1024: {
-                        slidesPerView: 3
-                    }
-                }
-            });
-            
-            // Initialize testimonial slider
-            new Swiper(".testimonial-slider", {
-                slidesPerView: 1,
-                spaceBetween: 20,
-                pagination: {
-                    el: ".testimonial-slider .swiper-pagination",
-                    clickable: true
-                },
-                breakpoints: {
-                    768: {
-                        slidesPerView: 2
-                    },
-                    1024: {
-                        slidesPerView: 3
-                    }
-                }
             });
             
             // Header scroll effect
