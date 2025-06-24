@@ -1,139 +1,188 @@
 <!DOCTYPE HTML>
-<html lang="en">
-<head>
-  <title>TravEasy Travels – Bright Journeys Await</title>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <link rel="stylesheet" href="assets/css/main.css"/>
-  <style>
-    body { --main-color: #FF6F61; --accent-color: #FFD700; }
-    #banner { background: var(--main-color); color: white; }
-    .button { background: var(--accent-color); color: #333; }
-    .highlight { border-top: 4px solid var(--accent-color); }
-    footer { background: #333; color: white; }
-    footer .links a { color: #ccc; }
-    footer .icons a { color: #FFD700; }
-  </style>
-</head>
-<body class="is-preload">
-<div id="page-wrapper">
+<html>
+	<head>
+		<title>Arcana Pro - Branded Business Template</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<style>
+			/* Custom Animations */
+			@keyframes fadeInUp {
+				from { opacity: 0; transform: translateY(20px); }
+				to { opacity: 1; transform: translateY(0); }
+			}
+			.fade-in-up {
+				animation: fadeInUp 1s ease-out forwards;
+			}
+			/* Video Background */
+			.video-bg {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				z-index: -1;
+			}
+			/* Custom Fonts */
+			@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+			body {
+				font-family: 'Poppins', sans-serif;
+			}
+			/* Hover Effects */
+			.card:hover {
+				transform: translateY(-10px);
+				transition: transform 0.3s ease;
+			}
+			/* Smooth Scroll */
+			html {
+				scroll-behavior: smooth;
+			}
+		</style>
+	</head>
+	<body class="bg-gray-100">
+		<!-- Navbar -->
+		<nav class="bg-white shadow-lg fixed w-full z-10">
+			<div class="container mx-auto px-4 py-4 flex justify-between items-center">
+				<a href="#" class="text-2xl font-bold text-indigo-600">Arcana Pro</a>
+				<div class="space-x-4">
+					<a href="#home" class="text-gray-700 hover:text-indigo-600 transition duration-300">Home</a>
+					<a href="#about" class="text-gray-700 hover:text-indigo-600 transition duration-300">About</a>
+					<a href="#services" class="text-gray-700 hover:text-indigo-600 transition duration-300">Services</a>
+					<a href="#gallery" class="text-gray-700 hover:text-indigo-600 transition duration-300">Gallery</a>
+					<a href="#contact" class="text-gray-700 hover:text-indigo-600 transition duration-300">Contact</a>
+				</div>
+			</div>
+		</nav>
 
-  <!-- Header -->
-  <div id="header">
-    <h1><a href="index.html" id="logo">TravEasy <em>Travels</em></a></h1>
-    <nav id="nav">
-      <ul>
-        <li class="current"><a href="#">Home</a></li>
-        <li><a href="#flights">Flights</a></li>
-        <li><a href="#hotels">Hotels</a></li>
-        <li><a href="#cabs">Cabs</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </div>
+		<!-- Hero Section with Video Background -->
+		<section id="home" class="relative h-screen flex items-center justify-center text-center text-white">
+			<video class="video-bg" autoplay muted loop>
+				<source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-background-with-animation-of-waves-and-spheres-1199-large.mp4" type="video/mp4">
+			</video>
+			<div class="absolute inset-0 bg-black opacity-50 z-0"></div>
+			<div class="relative z-10 fade-in-up">
+				<h1 class="text-5xl font-bold mb-4">Welcome to Arcana Pro</h1>
+				<p class="text-xl mb-6">Your Partner in Building a Bright Future</p>
+				<a href="#contact" class="bg-indigo-600 text-white px-6 py-3 rounded-full hover:bg-indigo-700 transition duration-300">Get Started</a>
+			</div>
+		</section>
 
-  <!-- Banner with photo -->
-  <section id="banner">
-    <header>
-      <h2>Discover Your Next Adventure</h2>
-      <p>Flights • Hotels • Cabs • Hassle‑free Booking</p>
-      <a href="https://wa.me/91XXXXXXXXXX" class="button">Book on WhatsApp</a>
-    </header>
-    <img src="<your-image-URL>" alt="Travel Hero" style="width:100%; opacity:0.75;"/>
-  </section>
+		<!-- About Section -->
+		<section id="about" class="py-20 bg-white">
+			<div class="container mx-auto px-4 text-center">
+				<h2 class="text-4xl font-bold text-gray-800 mb-8 fade-in-up">About Us</h2>
+				<p class="text-lg text-gray-600 max-w-2xl mx-auto mb-12 fade-in-up">
+					Arcana Pro is a leading business solutions provider, dedicated to delivering innovative and impactful results for our clients. Our team of experts is passionate about transforming ideas into reality.
+				</p>
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+					<div class="card bg-gray-100 p-6 rounded-lg shadow-lg fade-in-up">
+						<i class="fas fa-rocket text-indigo-600 text-4xl mb-4"></i>
+						<h3 class="text-xl font-semibold mb-2">Innovation</h3>
+						<p class="text-gray-600">We push boundaries to create cutting-edge solutions.</p>
+					</div>
+					<div class="card bg-gray-100 p-6 rounded-lg shadow-lg fade-in-up">
+						<i class="fas fa-users text-indigo-600 text-4xl mb-4"></i>
+						<h3 class="text-xl font-semibold mb-2">Teamwork</h3>
+						<p class="text-gray-600">Collaboration is at the heart of our success.</p>
+					</div>
+					<div class="card bg-gray-100 p-6 rounded-lg shadow-lg fade-in-up">
+						<i class="fas fa-star text-indigo-600 text-4xl mb-4"></i>
+						<h3 class="text-xl font-semibold mb-2">Excellence</h3>
+						<p class="text-gray-600">We strive for perfection in everything we do.</p>
+					</div>
+				</div>
+			</div>
+		</section>
 
-  <!-- Highlights -->
-  <section class="wrapper style1">
-    <div class="container">
-      <div class="row gtr-200">
-        <section class="col-4 col-12-narrower highlight" id="flights">
-          <i class="icon solid major fa-plane"></i>
-          <h3>Flight Booking</h3>
-          <p>Get low fares to your favourite destinations.</p>
-        </section>
-        <section class="col-4 col-12-narrower highlight" id="hotels">
-          <i class="icon solid major fa-bed"></i>
-          <h3>Hotel Reservations</h3>
-          <p>Cozy stays, 5★ luxury, or family rooms—we have you covered.</p>
-        </section>
-        <section class="col-4 col-12-narrower highlight" id="cabs">
-          <i class="icon solid major fa-car"></i>
-          <h3>Cab Services</h3>
-          <p>Safe & reliable rides for local transfers.</p>
-        </section>
-      </div>
-    </div>
-  </section>
+		<!-- Services Section -->
+		<section id="services" class="py-20 bg-indigo-50 text-center">
+			<div class="container mx-auto px-4">
+				<h2 class="text-4xl font-bold text-gray-800 mb-8 fade-in-up">Our Services</h2>
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+					<div class="card bg-white p-6 rounded-lg shadow-lg fade-in-up">
+						<img src="https://images.unsplash.com/photo-1516321318423-f06f85e3d3d3?auto=format&fit=crop&w=800&q=800&q=80" alt="Service 1" class="w-full h-4 rounded-lg mb-4">
+						<h3 class="text-xl font-semibold mb-2">Consulting</h3>
+						<p class="text-gray-600">Expert advice to optimize your business.</p>
+					</div>
+					<div class="card bg-white p-6 rounded-lg shadow-lg fade-in-up">
+						<img src="https://images.unsplash.com/photo-1504384304?auto=format&fit=crop&w=800&q=80" alt="Service 2" class="w-full h-48 rounded-lg mb-4">
+						<h3 class="text-xl font-semibold mb-2">Development</h3>
+						<p class="text-gray-600">Custom software tailored to your needs.</p>
+					</div>
+					<div class="card bg-white p-4 rounded-lg shadow-lg fade-in-up">
+						<img src="https://images.unsplash.com/photo-1486312334?auto=format&fit=crop&w=800&q=80" alt="w-full h-48 rounded-lg mb-4">
+						<h3 class="text-xl font-semibold mb-2">Marketing</h3>
+						<p class="text-gray-600">Boost your brand with strategic campaigns.</p>
+					</div>
+				</div>
+		</section>
 
-  <!-- Photo Gallery -->
-  <section class="wrapper style2">
-    <div class="container">
-      <header class="major">
-        <h2>Explore with Us</h2>
-        <p>Check out some of our favourite getaway moments</p>
-      </header>
-      <div class="row">
-        <div class="col-4"><img src=" https://www.freepik.com/free-photo/top-view-hand-holding-smartphone_30827157.htm#fromView=keyword&page=1&position=1&uuid=1f2d3dcc-f3a0-4d24-83bb-8dd312a4e6a6&query=Travel+Management>" alt="Destination 1" style="border-radius:8px;"/></div>
-        <div class="col-4"><img src=" https://www.freepik.com/free-photo/medium-shot-people-travel-agency_66257369.htm#fromView=keyword&page=1&position=48&uuid=991769b2-1bc5-4950-be01-7cca3cdeb3eb&query=Travel+Management" alt="Destination 2" style="border-radius:8px;"/></div>
-        <div class="col-4"><img src=" https://www.freepik.com/free-photo/front-view-female-vacation-holding-her-tickets-blue-desk-journey-sea-woman-trip-vacation-summer_14151471.htm#fromView=keyword&page=1&position=46&uuid=604d6a9a-e039-4409-bac4-b21406e7b86e&query=Travel+Management" alt="Destination 3" style="border-radius:8px;"/></div>
-      </div>
-    </div>
-  </section>
+		<!-- Gallery Section -->
+		<section id="gallery" class="py-4 bg-white text-100">
+			<div class="gallery mx-auto px-4 text-center">
+				<h2 class="text-4xl font-bold text-gray-800 mb-8 fade-in-up">Gallery</h2>
+				<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+					<img src="https://images.unsplash.com/photo-1507234?auto=format&fit=crop&w=800&q=80" alt="w-full h-64 object-cover rounded-lg fade-in-up">
+					<img src="https://images.unsplash.com/photo-150723874?auto=format&fit=crop&w=800&q=80" alt="w-full h-64 object-cover rounded-lg fade-in-up">
+					<img src="https://images.unsplash.com/photo-1507238744?auto=format&fit=crop&w=800&q=80" alt="w-full h-64 object-cover rounded-lg fade-in-up">
+					<img src="https://images.unsplash.com/photo-150723874?auto=format&fit=crop&w=800&q=80" alt="w-full h-64 object-cover rounded-lg fade-in-up">
+				</div>
+			</div>
+		</section>
 
-  <!-- Call to Action -->
-  <section id="cta" class="wrapper style3">
-    <div class="container">
-      <header>
-        <h2>Ready to Book?</h2>
-        <a href="https://wa.me/91XXXXXXXXXX" class="button">Chat Now</a>
-      </header>
-    </div>
-  </section>
+		<!-- Contact Section -->
+		<section id="contact" class="py-20 bg-indigo-600 text-white text-center">
+			<div class="container mx-auto px-4">
+				<h2 class="text-4xl font-bold mb-8 fade-in-up">Get in Touch</h2>
+				<p class="text-lg max-w-2xl mx-auto mb-12 fade-in-up">
+					Have a question or want to work together? Fill out the form below, and we'll get back to you soon!
+				</p>
+				<div class="max-w-lg mx-auto">
+					<div action="https://formspree.io/f/your-form-id" method="POST" class="space-y-4">
+						<input type="text" name="name" placeholder="Your Name" class="w-full p-4 rounded-lg bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-400" required>
+						<input type="email" name="email" placeholder="Your Email" class="w-full p-4 rounded-lg bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-400" required>
+						<textarea name="message" placeholder="Your Message" class="w-full p-4 rounded-lg bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-400" rows="5" required></textarea>
+						<button type="submit" class="bg-white text-indigo-600 px-6 py-3 rounded-full hover:bg-gray-100 transition duration-300">Send Message</button>
+					</div>
+				</div>
+			</div>
+		</section>
 
-  <!-- Footer / Contact -->
-  <div id="footer">
-    <div class="container">
-      <div class="row">
-        <section class="col-6 col-12-narrower" id="contact">
-          <h3>Contact Us</h3>
-          <p>📞 WhatsApp: <a href="https://wa.me/91XXXXXXXXXX">+91 XXXXXXXXXX</a></p>
-          <p>📧 Email: <a href="mailto:your@email.com">your@email.com</a></p>
-        </section>
-        <section class="col-6 col-12-narrower">
-          <h3>Quick Links</h3>
-          <ul class="links">
-            <li><a href="#flights">Flight Deals</a></li>
-            <li><a href="#hotels">Top Hotels</a></li>
-            <li><a href="#cabs">Cab Services</a></li>
-            <li><a href="#contact">Support</a></li>
-          </ul>
-        </section>
-      </div>
-    </div>
+		<!-- Footer -->
+		<footer class="bg-gray-800 text-white py-8 text-center">
+			<div class="container mx-auto px-4">
+				<p class="mb-4">© 2025 Arcana Pro. All rights reserved.</p>
+				<div class="space-x-4">
+					<a href="#" class="text-gray-400 hover:text-white transition duration-300"><i class="fab fa-facebook-f"></i></a>
+					<a href="#" class="text-gray-400 hover:text-white transition duration-300"><i class="fab fa-twitter"></i></a>
+					<a href="#" class="text-gray-400 hover:text-white transition duration-300"><i class="fab fa-instagram"></i></a>
+					<a href="#" class="text-gray-400 hover:text-white transition duration-300"><i class="fab fa-linkedin-in"></i></a>
+				</div>
+			</div>
+		</footer>
 
-    <ul class="icons">
-      <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-      <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-      <li><a href="https://wa.me/91XXXXXXXXXX" class="icon brands fa-whatsapp"><span class="label">WhatsApp</span></a></li>
-    </ul>
+		<script>
+			// Smooth scroll for anchor links
+			$('a[href*="#"]').on('click', function(e) {
+				e.preventDefault();
+				$('html, body').animate({
+					scrollTop: $($(this).attr('href')).offset().top
+				}, 800);
+			});
 
-    <div class="copyright">
-      <ul class="menu">
-        <li>&copy; 2025 TravEasy Travels. All rights reserved.</li>
-        <li>Design adapted from <a href="http://html5up.net">HTML5 UP</a></li>
-      </ul>
-    </div>
-  </div>
-
-</div>
-
-<!-- Scripts -->
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/jquery.dropotron.min.js"></script>
-<script src="assets/js/browser.min.js"></script>
-<script src="assets/js/breakpoints.min.js"></script>
-<script src="assets/js/util.js"></script>
-<script src="assets/js/main.js"></script>
-
-</body>
+			// Fade-in animations on scroll
+			$(window).on('scroll', function() {
+				$('.fade-in-up').each(function() {
+					var top_of_element = $(this).offset().top;
+					var bottom_of_window = $(window).scrollTop() + $(window).height();
+					if (bottom_of_window > top_of_element) {
+						$(this).addClass('fade-in-up');
+					}
+				});
+			});
+		</script>
+	</body>
 </html>
